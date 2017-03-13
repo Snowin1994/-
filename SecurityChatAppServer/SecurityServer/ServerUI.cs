@@ -38,10 +38,12 @@ namespace SecurityServer
                 if (!appServer.Setup(port))
                 {
                     ShowInfoToStatusBox("Failed to setup!");
+                    return;
                 }
                 if (!appServer.Start())
                 {
                     ShowInfoToStatusBox("Failed to start!");
+                    return;
                 }
                 ShowInfoToStatusBox("Successed to start!");
 

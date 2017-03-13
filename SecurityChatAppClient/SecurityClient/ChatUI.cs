@@ -66,6 +66,8 @@ namespace SecurityClient
             }
             catch(Exception ex)
             {
+                MessageBox.Show(ex.StackTrace); 
+                MessageBox.Show(ex.ToString());
                 // 在log生成异常记录
             }
         }
