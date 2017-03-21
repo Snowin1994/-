@@ -21,16 +21,22 @@ namespace SecurityClient
                 var socket = ar.AsyncState as Socket;
                 var dataLength = socket.EndReceive(ar);
 
+                var source = Encoding.UTF8.GetString(dataBuffer, 0, dataLength);
+                ChatUI.ui_temp.tbxRcvMsg.Invoke(
+                    ChatUI.ui_temp.show_test,
+                    new Object[] { source, ChatUI.ui_temp.tbxRcvMsg }
+                    );
+
                 //form.tbx_ReceiveMsg.Text += dataBuffer.ToString();
-                //socket.BeginReceive(InitializeSocket.buffer, 0, InitializeSocket.buffer.Length, SocketFlags.None, new AsyncCallback(ReceiveMessage), socket);
-                //connect.BeginReceive(
-                //    dataBuffer,                     //数据缓冲池
-                //    0,
-                //    dataBuffer.Length,
-                //    SocketFlags.None,
-                //    new AsyncCallback(ReceiveMessage),
-                //    socket
-                //    );
+                //socket.BeginReceive(dataBuffer, 0, dataLength, SocketFlags.None, new AsyncCallback(ReceiveMessage), socket);
+                connect.BeginReceive(
+                    dataBuffer,                     //数据缓冲池
+                    0,
+                    dataBuffer.Length,
+                    SocketFlags.None,
+                    new AsyncCallback(ReceiveMessage),
+                    socket
+                    );
             }
             catch (Exception ex)
             {

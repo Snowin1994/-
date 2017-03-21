@@ -9,11 +9,11 @@ using SuperSocket.SocketBase.Protocol;
 
 namespace SecurityServer.Command
 {
-    public class Info : CommandBase<AppSession, StringRequestInfo>
+    public class Info : CommandBase<ChatSession, StringRequestInfo>
     {
-        public override void ExecuteCommand(AppSession session, StringRequestInfo requestInfo)
+        public override void ExecuteCommand(ChatSession session, StringRequestInfo requestInfo)
         {
-            session.Send("Welcome to Snowin's world!");
+            session.Send("The information is : 【This is my world!】");
         }
     }
 }

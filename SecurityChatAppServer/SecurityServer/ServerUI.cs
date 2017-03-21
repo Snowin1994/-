@@ -1,4 +1,5 @@
 ﻿using SuperSocket.SocketBase;
+using SuperSocket.SocketBase.Config;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,7 @@ namespace SecurityServer
 {
     public partial class ServerUI : Form
     {
-        private AppServer appServer;
+        private ChatServer appServer;
         public ServerUI()
         {
             InitializeComponent();
@@ -33,9 +34,14 @@ namespace SecurityServer
         {
             if(btnConnectServer.Text == "Connect")
             {
-                appServer = new AppServer();
-                int port = Common.StringToInt(tbxPort.Text);
-                if (!appServer.Setup(port))
+                appServer = new ChatServer();
+                // int port = 
+                var serverConfig = new ServerConfig
+                {
+                    Port = Common.StringToInt(tbxPort.Text),
+                    TextEncoding = "UTF-8",
+                };
+                if (!appServer.Setup(serverConfig))
                 {
                     ShowInfoToStatusBox("Failed to setup!");
                     return;

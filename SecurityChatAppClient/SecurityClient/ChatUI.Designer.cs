@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.btnConnectClient = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbxRcvMsg = new System.Windows.Forms.TextBox();
             this.tbxSendMsg = new System.Windows.Forms.TextBox();
             this.btnSendMsg = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -44,13 +44,13 @@
             this.btnConnectClient.UseVisualStyleBackColor = true;
             this.btnConnectClient.Click += new System.EventHandler(this.btnConnectClient_Click);
             // 
-            // textBox1
+            // tbxRcvMsg
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 54);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(561, 253);
-            this.textBox1.TabIndex = 1;
+            this.tbxRcvMsg.Location = new System.Drawing.Point(12, 54);
+            this.tbxRcvMsg.Multiline = true;
+            this.tbxRcvMsg.Name = "tbxRcvMsg";
+            this.tbxRcvMsg.Size = new System.Drawing.Size(561, 253);
+            this.tbxRcvMsg.TabIndex = 1;
             // 
             // tbxSendMsg
             // 
@@ -77,10 +77,11 @@
             this.ClientSize = new System.Drawing.Size(585, 463);
             this.Controls.Add(this.btnSendMsg);
             this.Controls.Add(this.tbxSendMsg);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbxRcvMsg);
             this.Controls.Add(this.btnConnectClient);
             this.Name = "ChatUI";
             this.Text = "Chat With Somebody";
+            this.Load += new System.EventHandler(this.ChatUI_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -89,9 +90,9 @@
         #endregion
 
         private System.Windows.Forms.Button btnConnectClient;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox tbxSendMsg;
         private System.Windows.Forms.Button btnSendMsg;
+        public System.Windows.Forms.TextBox tbxRcvMsg;
     }
 }
 
