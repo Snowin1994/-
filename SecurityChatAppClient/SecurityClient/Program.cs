@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SecurityClient.ui_design;
 
 namespace SecurityClient
 {
@@ -16,7 +17,8 @@ namespace SecurityClient
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ChatUI());
+            // Application.Run(new ChatUI());
+            Application.Run(new ui_login());
         }
     }
 }

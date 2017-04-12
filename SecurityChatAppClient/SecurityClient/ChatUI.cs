@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SecurityClient.ui_design;
 
 namespace SecurityClient
 {
@@ -31,6 +32,9 @@ namespace SecurityClient
 
         private void ChatUI_Load(object sender, EventArgs e)
         {
+            // test other ui
+            // new ui_login().Show();
+
             ui_temp = this;
             show_test = new ShowTest(set_test);
         }
