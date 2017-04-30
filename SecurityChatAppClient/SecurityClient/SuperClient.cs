@@ -1,0 +1,161 @@
+﻿using SecurityClient.ui_design;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace SecurityClient
+{
+    public class SuperClient
+    {
+        /// <summary>
+        /// 数据缓冲区大小
+        /// </summary>
+        private const int BUFFER_LEN = 10000;
+
+        /// <summary>
+        /// 客户端 socket 套接字实例化
+        /// </summary>
+        private Socket socket_connect;
+
+        /// <summary>
+        /// 数据缓冲区
+        /// </summary>
+        private byte[] b_data_buffer;
+
+        /// <summary>
+        /// 客户端接受数据的线程
+        /// </summary>
+        private Thread thread_receive_client;
+
+        /// <summary>
+        /// 数据读取起始位置 当前默认值为0
+        /// </summary>
+        private const int START_POS = 0;
+
+        private ThreadMessage thread_sender;
+
+        public SuperClient()
+        {
+            b_data_buffer = new byte[BUFFER_LEN];
+            socket_connect = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            thread_sender = new ThreadMessage();
+        }
+
+        public bool Start(string host, int port)
+        {
+            try
+            {
+                IPAddress ip = IPAddress.Parse(host);
+                IPEndPoint ip_port = new IPEndPoint(ip, port);
+                socket_connect.Connect(ip_port);
+                thread_receive_client = new Thread(() =>
+                {
+                    socket_connect.BeginReceive(
+                        b_data_buffer,
+                        START_POS,
+                        b_data_buffer.Length,
+                        SocketFlags.None,
+                        new AsyncCallback(ReceiveMessage),
+                        socket_connect
+                        );
+                });
+                thread_receive_client.IsBackground = true;
+                thread_receive_client.Start();
+
+                return true;
+            }
+            catch(Exception ex)
+            {
+                // 异常处理
+                // 日志记录
+                Stop();
+
+                return false;
+            }
+        }
+        public bool Stop()
+        {
+            try
+            {
+                // 设置socket是否重用参数，默认true
+                bool is_reuse = true;
+
+                socket_connect.Disconnect(is_reuse);
+                if (thread_receive_client.IsAlive)
+                {
+                    thread_receive_client.Abort();
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // 异常处理
+                // 日志记录
+
+                return false;
+            }
+        }
+
+        public void ReceiveMessage(IAsyncResult async_result)
+        {
+            try
+            {
+                var socket_con_get = async_result.AsyncState as Socket;
+                var i_data_length = socket_con_get.EndReceive(async_result);
+                var string_data = Encoding.UTF8.GetString(b_data_buffer, 0, i_data_length);
+
+                // #####################################################
+                // 线程通信 显示到UI界面上
+                if (ui_chat.p_ui_chat != null)
+                {
+                    ui_chat.p_ui_chat.Invoke(
+                        ui_chat.p_ui_chat.show_text,
+                        new Object[] { string_data, ui_chat.p_ui_chat.rtbx_receive_msg }
+                        );
+
+                }
+                    // #####################################################
+
+                socket_connect.BeginReceive(b_data_buffer,
+                    START_POS,
+                    b_data_buffer.Length,
+                    SocketFlags.None,
+                    new AsyncCallback(ReceiveMessage),
+                    socket_connect);
+            }
+            catch(Exception ex)
+            {
+                // 异常处理
+            }
+        }
+
+        public bool Send(string source)
+        {
+            try
+            {
+                // *************************
+                string str_head = "snowhead";
+                string str_tail = "snowtail";
+                // *************************
+
+                byte[] byte_message = Encoding.UTF8.GetBytes(str_head + source + str_tail);
+                socket_connect.BeginSend(byte_message, 0, byte_message.Length, SocketFlags.None, null, null);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // 异常处理
+                // 记录日志
+
+                return false;
+            }
+        }
+    }
+}

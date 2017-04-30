@@ -8,14 +8,18 @@ using System.Threading.Tasks;
 
 namespace SecurityServer
 {
-    public class ChatSession : AppSession<ChatSession>
+    public class ChatSession : AppSession<ChatSession, ChatRequestInfo>
     {
         protected override void OnSessionStarted()
         {
-            this.Send("Welcome to Snowin's world!");
+            //this.Send(
+            //    "Welcome to Snowin's world!" + 
+            //    System.Environment.NewLine + 
+            //    DateTime.Now.ToString()
+            //    );
         }
 
-        protected override void HandleUnknownRequest(StringRequestInfo requestInfo)
+        protected override void HandleUnknownRequest(ChatRequestInfo requestInfo)
         {
             this.Send("Unknow request");
         }

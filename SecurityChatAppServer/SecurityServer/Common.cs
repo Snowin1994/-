@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SecurityServer
 {
-    class Common
+    public class Common
     {
         public static int StringToInt(string str)
         {

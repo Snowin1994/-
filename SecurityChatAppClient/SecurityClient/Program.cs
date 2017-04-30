@@ -18,7 +18,7 @@ namespace SecurityClient
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             // Application.Run(new ChatUI());
-            Application.Run(new ui_login());
+            Application.Run(ui_login.GetInstance());
         }
     }
 }

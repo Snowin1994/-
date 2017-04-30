@@ -9,8 +9,14 @@ using System.Threading.Tasks;
 
 namespace SecurityServer
 {
-    public class ChatServer : AppServer<ChatSession>
+    class ChatServer : AppServer<ChatSession, ChatRequestInfo>
     {
+        public ChatServer()
+            : base(new ChatReceiveFilterFactory())
+        {
+
+        }
+
         protected override bool Setup(IRootConfig rootConfig, IServerConfig config)
         {
             return base.Setup(rootConfig, config);

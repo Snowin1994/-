@@ -9,9 +9,9 @@ using SuperSocket.SocketBase.Protocol;
 
 namespace SecurityServer.Command
 {
-    public class Info : CommandBase<ChatSession, StringRequestInfo>
+    public class Info : CommandBase<ChatSession, ChatRequestInfo>
     {
-        public override void ExecuteCommand(ChatSession session, StringRequestInfo requestInfo)
+        public override void ExecuteCommand(ChatSession session, ChatRequestInfo requestInfo)
         {
             session.Send("The information is : 【This is my world!】");
         }

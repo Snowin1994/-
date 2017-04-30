@@ -29,6 +29,13 @@ namespace rsa_test_v1._0
                 byte[] srcByte = unicode.GetBytes(srcString);
                 byte[] cypherByte = rsaService.Encrypt(srcByte, false);
 
+                // test
+                foreach (byte data in cypherByte)
+                {
+                    Console.Write(data + " ");
+                }
+                Console.WriteLine();
+
                 return Convert.ToBase64String(cypherByte);
             }
             catch (CryptographicException e)

@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.btn_login = new System.Windows.Forms.Button();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
@@ -55,19 +55,26 @@
             this.panel1.Size = new System.Drawing.Size(367, 137);
             this.panel1.TabIndex = 2;
             // 
-            // textBox1
+            // btn_login
             // 
-            this.textBox1.Location = new System.Drawing.Point(136, 21);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(123, 21);
-            this.textBox1.TabIndex = 2;
+            this.btn_login.Location = new System.Drawing.Point(74, 92);
+            this.btn_login.Name = "btn_login";
+            this.btn_login.Size = new System.Drawing.Size(213, 28);
+            this.btn_login.TabIndex = 6;
+            this.btn_login.Text = "登录";
+            this.btn_login.UseVisualStyleBackColor = true;
+            this.btn_login.Click += new System.EventHandler(this.btn_login_Click);
             // 
-            // textBox2
+            // linkLabel2
             // 
-            this.textBox2.Location = new System.Drawing.Point(136, 51);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(123, 21);
-            this.textBox2.TabIndex = 3;
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.LinkColor = System.Drawing.Color.Teal;
+            this.linkLabel2.Location = new System.Drawing.Point(266, 59);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(53, 12);
+            this.linkLabel2.TabIndex = 5;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "找回密码";
             // 
             // linkLabel1
             // 
@@ -81,26 +88,20 @@
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "注册帐号";
             // 
-            // linkLabel2
+            // textBox2
             // 
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.LinkColor = System.Drawing.Color.Teal;
-            this.linkLabel2.Location = new System.Drawing.Point(266, 59);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(53, 12);
-            this.linkLabel2.TabIndex = 5;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "找回密码";
+            this.textBox2.Location = new System.Drawing.Point(136, 51);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.PasswordChar = '*';
+            this.textBox2.Size = new System.Drawing.Size(123, 21);
+            this.textBox2.TabIndex = 3;
             // 
-            // btn_login
+            // textBox1
             // 
-            this.btn_login.Location = new System.Drawing.Point(74, 92);
-            this.btn_login.Name = "btn_login";
-            this.btn_login.Size = new System.Drawing.Size(213, 28);
-            this.btn_login.TabIndex = 6;
-            this.btn_login.Text = "登录";
-            this.btn_login.UseVisualStyleBackColor = true;
-            this.btn_login.Click += new System.EventHandler(this.btn_login_Click);
+            this.textBox1.Location = new System.Drawing.Point(136, 21);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(123, 21);
+            this.textBox1.TabIndex = 2;
             // 
             // pictureBox2
             // 
@@ -131,8 +132,13 @@
             this.ClientSize = new System.Drawing.Size(360, 245);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "ui_login";
-            this.Text = "登录";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = " ";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ui_login_FormClosing);
+            this.Load += new System.EventHandler(this.ui_login_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
