@@ -10,7 +10,7 @@ namespace SecurityServer
     class ChatReceiveFilter : BeginEndMarkReceiveFilter<ChatRequestInfo>
     {
         private readonly Encoding encoding;
-        private const string SPLITER = " ";
+        private const string SPLITER = ":";
         private readonly static byte[] BeginMark = new byte[] { (byte)'s', (byte)'n', (byte)'o', (byte)'w', (byte)'h', (byte)'e', (byte)'a', (byte)'d' };
         private readonly static byte[] EndMark = new byte[] { (byte)'s', (byte)'n', (byte)'o', (byte)'w', (byte)'t', (byte)'a', (byte)'i', (byte)'l' };
 

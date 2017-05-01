@@ -67,6 +67,7 @@
     <Compile Include="ChatServer.cs" />
     <Compile Include="ChatSession.cs" />
     <Compile Include="Command\Info.cs" />
+    <Compile Include="Command\Login.cs" />
     <Compile Include="Common.cs" />
     <Compile Include="ServerUI.cs">
       <SubType>Form</SubType>
