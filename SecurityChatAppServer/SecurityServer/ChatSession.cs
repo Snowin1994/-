@@ -10,13 +10,21 @@ namespace SecurityServer
 {
     public class ChatSession : AppSession<ChatSession, ChatRequestInfo>
     {
+        private string username;
+
+        public string Username
+        {
+            get { return username; }
+            set { username = value; }
+        }
+
+        private const string STR_HEAD = "snowhead";
+        private const string STR_TAIL = "snowtail";
+        public readonly string SPLITER = ",";
+
         protected override void OnSessionStarted()
         {
-            //this.Send(
-            //    "Welcome to Snowin's world!" + 
-            //    System.Environment.NewLine + 
-            //    DateTime.Now.ToString()
-            //    );
+
         }
 
         protected override void HandleUnknownRequest(ChatRequestInfo requestInfo)
@@ -32,6 +40,11 @@ namespace SecurityServer
         protected override void OnSessionClosed(CloseReason reason)
         {
             base.OnSessionClosed(reason);
+        }
+
+        public override void Send(string message)
+        {
+            base.Send(STR_HEAD + message + STR_TAIL);
         }
     }
 }

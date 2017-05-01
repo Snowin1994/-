@@ -91,6 +91,7 @@
             // 
             this.rtbx_receive_msg.Location = new System.Drawing.Point(1, 1);
             this.rtbx_receive_msg.Name = "rtbx_receive_msg";
+            this.rtbx_receive_msg.ReadOnly = true;
             this.rtbx_receive_msg.Size = new System.Drawing.Size(494, 293);
             this.rtbx_receive_msg.TabIndex = 6;
             this.rtbx_receive_msg.Text = "";

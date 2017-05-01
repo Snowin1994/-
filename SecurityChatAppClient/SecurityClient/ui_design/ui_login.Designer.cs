@@ -32,8 +32,8 @@
             this.btn_login = new System.Windows.Forms.Button();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbx_password = new System.Windows.Forms.TextBox();
+            this.tbx_username = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
@@ -47,8 +47,8 @@
             this.panel1.Controls.Add(this.btn_login);
             this.panel1.Controls.Add(this.linkLabel2);
             this.panel1.Controls.Add(this.linkLabel1);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.tbx_password);
+            this.panel1.Controls.Add(this.tbx_username);
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Location = new System.Drawing.Point(-6, 109);
             this.panel1.Name = "panel1";
@@ -88,20 +88,22 @@
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "注册帐号";
             // 
-            // textBox2
+            // tbx_password
             // 
-            this.textBox2.Location = new System.Drawing.Point(136, 51);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '*';
-            this.textBox2.Size = new System.Drawing.Size(123, 21);
-            this.textBox2.TabIndex = 3;
+            this.tbx_password.Location = new System.Drawing.Point(136, 51);
+            this.tbx_password.Name = "tbx_password";
+            this.tbx_password.PasswordChar = '*';
+            this.tbx_password.Size = new System.Drawing.Size(123, 21);
+            this.tbx_password.TabIndex = 3;
+            this.tbx_password.Text = "1234";
             // 
-            // textBox1
+            // tbx_username
             // 
-            this.textBox1.Location = new System.Drawing.Point(136, 21);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(123, 21);
-            this.textBox1.TabIndex = 2;
+            this.tbx_username.Location = new System.Drawing.Point(136, 21);
+            this.tbx_username.Name = "tbx_username";
+            this.tbx_username.Size = new System.Drawing.Size(123, 21);
+            this.tbx_username.TabIndex = 2;
+            this.tbx_username.Text = "snowin1994";
             // 
             // pictureBox2
             // 
@@ -153,8 +155,8 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbx_password;
+        private System.Windows.Forms.TextBox tbx_username;
         private System.Windows.Forms.Button btn_login;
         private System.Windows.Forms.LinkLabel linkLabel2;
     }

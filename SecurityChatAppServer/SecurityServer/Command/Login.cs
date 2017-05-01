@@ -11,22 +11,19 @@ namespace SecurityServer.Command
     {
         public override void ExecuteCommand(ChatSession session, ChatRequestInfo requestInfo)
         {
-            const string SPLITER = ",";
-
             string source = requestInfo.Body;
-            int pos = source.IndexOf(SPLITER);
+            int pos = source.IndexOf(session.SPLITER);
 
             string username = source.Substring(0, pos);
-            string password = source.Substring(pos + SPLITER.Length);
+            string password = source.Substring(pos + session.SPLITER.Length);
 
             // 查询数据库结果
-            if(username == "snowin")
+            ExecuteResult result = ChatServer.Data_Operate.Login(username, password);
+            session.Send("Login:" + result.ToString());
+
+            if(result == ExecuteResult.Success)
             {
-                session.Send("Login:success");
-            }
-            else
-            {
-                session.Send("Login:fail");
+                session.Username = username;
             }
         }
     }

@@ -87,7 +87,10 @@ namespace SecurityClient.ui_design
 
         private void btn_send_msg_Click(object sender, EventArgs e)
         {
-            ui_login.GetInstance().ChatClient.Send(tbx_send_msg.Text);
+            ui_login.GetInstance().ChatClient.Send("ReceiveMsg:" 
+                + str_friend_name
+                + "common"
+                + tbx_send_msg.Text);
 
             // 刷新发送消息UI显示
             rtbx_receive_msg.Text += tbx_send_msg.Text + System.Environment.NewLine;

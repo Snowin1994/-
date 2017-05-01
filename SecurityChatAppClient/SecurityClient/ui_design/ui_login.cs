@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SecurityServer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,14 +23,29 @@ namespace SecurityClient.ui_design
         /// </summary>
         private SuperClient chat_client;
 
-        /// <summary>
-        /// 接受服务器发送的数据
-        /// </summary>
-        private Thread thread_receive_data;
+        ////////////////////
+        // 跨线程数据显示 //
+        ////////////////////
+
+        public delegate void SendMsg(string result);
+        public SendMsg sender_msg;
 
         private ui_login()
         {
             InitializeComponent();
+        }
+
+        private void SetLoginRsult(string result)
+        {
+            if(result == "Success")
+            {
+                this.Hide();
+                ui_main_panel.GetInstance().Show();
+            }
+            else
+            {
+                MessageBox.Show("用户名或密码错误");
+            }
         }
 
         public SuperClient ChatClient
@@ -39,8 +55,8 @@ namespace SecurityClient.ui_design
 
         private void btn_login_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            ui_main_panel.GetInstance().Show();
+            string cmd = "Login:" + tbx_username.Text + "," + tbx_password.Text;
+            chat_client.Send(cmd);
         }
 
         public static ui_login GetInstance()
@@ -67,12 +83,26 @@ namespace SecurityClient.ui_design
 
         private void ui_login_Load(object sender, EventArgs e)
         {
-            // string string_host = "120.24.161.40";
-            string string_host = "127.0.0.1";
-            int i_port = 2017;
-            chat_client = new SuperClient();
+            try
+            {
+                // string string_host = "120.24.161.40";
+                string string_host = "127.0.0.1";
+                int i_port = 2017;
+                chat_client = new SuperClient();
 
-            chat_client.Start(string_host, i_port);
+                if (!chat_client.Start(string_host, i_port))
+                {
+                    throw new Exception("请检查网络连接");
+                }
+                // 给线程间通信的委托添加方法
+                sender_msg = new SendMsg(SetLoginRsult);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+                System.Environment.Exit(0);
+            }
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using SecurityClient.ui_design;
+﻿using SecurityClient.Command;
+using SecurityClient.ui_design;
+using SecurityServer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +38,8 @@ namespace SecurityClient
         /// 数据读取起始位置 当前默认值为0
         /// </summary>
         private const int START_POS = 0;
+
+        //private 
 
         private ThreadMessage thread_sender;
 
@@ -107,20 +111,37 @@ namespace SecurityClient
             try
             {
                 var socket_con_get = async_result.AsyncState as Socket;
+                
+
                 var i_data_length = socket_con_get.EndReceive(async_result);
                 var string_data = Encoding.UTF8.GetString(b_data_buffer, 0, i_data_length);
 
                 // #####################################################
-                // 线程通信 显示到UI界面上
-                if (ui_chat.p_ui_chat != null)
-                {
-                    ui_chat.p_ui_chat.Invoke(
-                        ui_chat.p_ui_chat.show_text,
-                        new Object[] { string_data, ui_chat.p_ui_chat.rtbx_receive_msg }
-                        );
+                // 线程通信 消息分发
+                ChatReceiveFilter receive_filter = new ChatReceiveFilter();
+                int rest = 0;
+                ChatRequestInfo request_info = receive_filter.Filter(b_data_buffer, 0, i_data_length, false, out rest);
 
+                ICommand command = null;
+                if(request_info != null)
+                {
+                    switch(request_info.Key)
+                    {
+                        case "Login" : command = new Login(); break;
+                        case "FriendList" : command = new FriendList(); break;
+                        case "ReceiveMsg": command = new ReceiveMsg(); break;
+
+
+
+
+                    }
                 }
-                    // #####################################################
+
+                if(command != null)
+                {
+                    command.ExecuteCommand(request_info.Body);
+                }
+                // #####################################################
 
                 socket_connect.BeginReceive(b_data_buffer,
                     START_POS,
