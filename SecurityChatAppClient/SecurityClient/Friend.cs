@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SecurityServer.DbOperation
+namespace SecurityClient
 {
-    class Friend
+    public class Friend
     {
         private string username;
         /// <summary>
@@ -34,9 +34,8 @@ namespace SecurityServer.DbOperation
             set { signature = value; }
         }
 
-        public Friend(string _username, string _nickname, string _signature)
+        public Friend(string _nickname, string _signature)
         {
-            username = _username;
             notename = _nickname;
             signature = _signature;
         }

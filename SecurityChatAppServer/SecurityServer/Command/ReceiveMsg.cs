@@ -27,7 +27,7 @@ namespace SecurityServer.Command
             // 转发消息到接收方
             foreach (var user in session.AppServer.GetSessions(s => s.Username == receiver))
             {
-                session.Send("ReceiveMsg:" 
+                user.Send("ReceiveMsg:" 
                     + session.Username
                     + "," + msg_type
                     + "," + msg);

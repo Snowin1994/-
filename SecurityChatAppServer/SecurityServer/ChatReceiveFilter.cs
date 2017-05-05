@@ -4,11 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SuperSocket.Facility.Protocol;
+using MysqlConnection;
 
 namespace SecurityServer
 {
     class ChatReceiveFilter : BeginEndMarkReceiveFilter<ChatRequestInfo>
     {
+        /// <summary>
+        /// 默认字符集 utf-8
+        /// </summary>
         private readonly Encoding encoding;
         private const string SPLITER = ":";
         private readonly static byte[] BeginMark = new byte[] { (byte)'s', (byte)'n', (byte)'o', (byte)'w', (byte)'h', (byte)'e', (byte)'a', (byte)'d' };
@@ -22,6 +26,7 @@ namespace SecurityServer
 
         protected override ChatRequestInfo ProcessMatchedRequest(byte[] readBuffer, int offset, int length)
         {
+
             // 解析数据为CharRequestInfo实例并返回
             string source = encoding.GetString(readBuffer, offset + BeginMark.Length, length - BeginMark.Length - EndMark.Length);
             int pos = source.IndexOf(SPLITER);

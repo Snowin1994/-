@@ -18,52 +18,63 @@ namespace SecurityClient.ui_design
         /// <summary>
         /// 保存已经打开的好友名称
         /// </summary>
-        private static ArrayList alist_chatting_friends = new ArrayList();
+        public static Hashtable tables_friends = new Hashtable();
+
+        // private static ArrayList alist_chatting_friends = new ArrayList();
         private const string STR_TITLE_BEFOR = "与";
         private const string STR_TITLE_AFTER = "聊天中...";
 
-        private string str_friend_name;
+        private string str_username;
+        private string str_friend_notename;
 
         //////////////////
         // UI跨线程显示 //
         //////////////////
 
-        public delegate void ShowText(string text, System.Windows.Forms.Control control);
+        public delegate void ShowText(string text, System.Windows.Forms.RichTextBox control);
         public ShowText show_text;
-        public static ui_chat p_ui_chat;
 
-        public ui_chat()
+        private ui_chat()
         {
             InitializeComponent();
         }
 
-        public ui_chat(string name)
+        private ui_chat(string username, string notename)
         {
             // 获取好友姓名
-            str_friend_name = name;
+            str_username = username;
+            str_friend_notename = notename;
 
             InitializeComponent();
         }
 
-        private void SetMessage(string msg, System.Windows.Forms.Control control)
+        public static ui_chat GetInstance(string username, string notename)
         {
-            control.Text += msg + System.Environment.NewLine + System.Environment.NewLine ;
+            if(!tables_friends.Contains(username))
+            {
+                tables_friends.Add(username, new ui_chat(username, notename));
+
+            }
+
+            return (ui_chat)tables_friends[username];
         }
 
-        private void init_data(string str_name)
+        private void SetMessage(string msg, System.Windows.Forms.RichTextBox control)
         {
-            bool bl_exist = alist_chatting_friends.Contains(str_name);
-            if (!bl_exist)
-            {
-                alist_chatting_friends.Add(str_name);
-            }
+            // string rightSide = "\t\t\t\t\t\t\t\t\t";
+            // control.Text += SetFormat(msg);
+
+            control.Text += str_friend_notename + "  "
+                + DateTime.Now.ToString("yyyy-MM-dd HH:mm") + System.Environment.NewLine
+                + "  " + msg + System.Environment.NewLine;
+
+            control.Focus();
         }
 
         private void ui_chat_Load(object sender, EventArgs e)
         {
-            this.Text = STR_TITLE_BEFOR + str_friend_name + STR_TITLE_AFTER;
+            this.Text = STR_TITLE_BEFOR + str_friend_notename + STR_TITLE_AFTER;
             this.Size = new Size(FORM_WEIGHT_NOHISTORY, this.Size.Height);
-            p_ui_chat = this;
             // 给委托添加方法
             show_text = new ShowText(SetMessage);
         }
@@ -87,14 +98,44 @@ namespace SecurityClient.ui_design
 
         private void btn_send_msg_Click(object sender, EventArgs e)
         {
-            ui_login.GetInstance().ChatClient.Send("ReceiveMsg:" 
-                + str_friend_name
-                + "common"
-                + tbx_send_msg.Text);
+            if (tbx_send_msg.Text != "")
+            {
+                ui_login.GetInstance().ChatClient.Send("ReceiveMsg:"
+                    + str_username
+                    + ",common,"
+                    + tbx_send_msg.Text);
 
-            // 刷新发送消息UI显示
-            rtbx_receive_msg.Text += tbx_send_msg.Text + System.Environment.NewLine;
-            tbx_send_msg.Text = "";
+                // 刷新发送消息UI显示
+                rtbx_receive_msg.Text += this.SetFormat(tbx_send_msg.Text);
+                rtbx_receive_msg.Focus();
+                tbx_send_msg.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("发送内容不能为空，请重新输入！");
+            }
+        }
+
+        private string SetFormat(string source)
+        {
+            string result = ui_main_panel.user.Nickname + "  " + DateTime.Now.ToString("yyyy-MM-dd HH:mm") + System.Environment.NewLine
+                + "  " + source + System.Environment.NewLine;
+
+            return result;
+        }
+
+        private void ui_chat_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            tables_friends.Remove(str_username);
+        }
+
+        private void ui_chat_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch(e.KeyCode)
+            {
+                case Keys.Enter:
+                    btn_send_msg_Click(this, EventArgs.Empty); break;
+            }
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SuperSocket.Facility.Protocol;
 
-namespace SecurityServer
+namespace SecurityClient
 {
     class ChatReceiveFilter : BeginEndMarkReceiveFilter<ChatRequestInfo>
     {

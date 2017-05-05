@@ -80,7 +80,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(335, 304);
+            this.checkBox1.Location = new System.Drawing.Point(325, 304);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(72, 16);
             this.checkBox1.TabIndex = 7;
@@ -98,9 +98,9 @@
             // 
             // btn_chat_history
             // 
-            this.btn_chat_history.Location = new System.Drawing.Point(415, 300);
+            this.btn_chat_history.Location = new System.Drawing.Point(406, 300);
             this.btn_chat_history.Name = "btn_chat_history";
-            this.btn_chat_history.Size = new System.Drawing.Size(75, 23);
+            this.btn_chat_history.Size = new System.Drawing.Size(84, 23);
             this.btn_chat_history.TabIndex = 5;
             this.btn_chat_history.Text = "聊天记录";
             this.btn_chat_history.UseVisualStyleBackColor = true;
@@ -132,9 +132,9 @@
             // 
             // btn_close_form
             // 
-            this.btn_close_form.Location = new System.Drawing.Point(334, 466);
+            this.btn_close_form.Location = new System.Drawing.Point(327, 466);
             this.btn_close_form.Name = "btn_close_form";
-            this.btn_close_form.Size = new System.Drawing.Size(75, 23);
+            this.btn_close_form.Size = new System.Drawing.Size(72, 23);
             this.btn_close_form.TabIndex = 2;
             this.btn_close_form.Text = "关闭";
             this.btn_close_form.UseVisualStyleBackColor = true;
@@ -142,11 +142,11 @@
             // 
             // btn_send_msg
             // 
-            this.btn_send_msg.Location = new System.Drawing.Point(417, 466);
+            this.btn_send_msg.Location = new System.Drawing.Point(408, 466);
             this.btn_send_msg.Name = "btn_send_msg";
-            this.btn_send_msg.Size = new System.Drawing.Size(75, 23);
+            this.btn_send_msg.Size = new System.Drawing.Size(84, 23);
             this.btn_send_msg.TabIndex = 3;
-            this.btn_send_msg.Text = "发送";
+            this.btn_send_msg.Text = "发送(Enter)";
             this.btn_send_msg.UseVisualStyleBackColor = true;
             this.btn_send_msg.Click += new System.EventHandler(this.btn_send_msg_Click);
             // 
@@ -169,10 +169,14 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
+            this.MaximizeBox = false;
             this.Name = "ui_chat";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "与 *** 聊天中";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ui_chat_FormClosing);
             this.Load += new System.EventHandler(this.ui_chat_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ui_chat_KeyDown);
             this.panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();

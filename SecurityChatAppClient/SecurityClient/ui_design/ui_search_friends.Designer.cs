@@ -79,6 +79,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "ui_search_friends";
             this.Text = "查找好友";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ui_search_friends_FormClosing);

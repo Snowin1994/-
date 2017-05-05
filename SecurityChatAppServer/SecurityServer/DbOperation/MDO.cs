@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using SecurityServer;
 using SecurityServer.DbOperation;
+using System.IO;
 
 namespace MysqlConnection
 {
@@ -22,7 +23,7 @@ namespace MysqlConnection
 
         public MDO()
         {
-            str_conn = "Database=db_chat_server;Data Source=localhost;User Id=root;Password=123456";
+            str_conn = "Database=db_chat_server;Data Source=localhost;User Id=root;Password=123456;Charset=utf8";
         }
 
         public void SelectAll()
@@ -43,36 +44,67 @@ namespace MysqlConnection
             //}
         }
 
-        internal ExecuteResult Login(string username, string password)
+        internal User Login(string username, string password)
         {
-            string sql = "SELECT username from user WHERE username='" 
-                + username
-                + "' AND userpw='"
-                + password + "';";
-            MySqlConnection mysql_conn = new MySqlConnection(str_conn);
-            mysql_conn.Open();
-
-            MySqlCommand mysql_cmd = new MySqlCommand(sql, mysql_conn);
-            MySqlDataReader mysql_reader = mysql_cmd.ExecuteReader();
-            var result = mysql_reader.Read();
-            mysql_conn.Close();
-
-            if (result)
+            try
             {
-                return ExecuteResult.Success;
-            }
-            else
-            {
-                return ExecuteResult.Failure;
-            }
+                string sql = "SELECT username, nickname, signature from user WHERE username='"
+                    + username
+                    + "' AND userpw='"
+                    + password + "';";
 
+                Log(sql);
+
+
+
+                MySqlConnection mysql_conn = new MySqlConnection(str_conn);
+                mysql_conn.Open();
+
+                MySqlCommand mysql_cmd = new MySqlCommand(sql, mysql_conn);
+                MySqlDataReader mysql_reader = mysql_cmd.ExecuteReader();
+
+                User user = new User();
+                if (mysql_reader.Read())
+                {
+                    user.Username = mysql_reader.GetString(0);
+                    user.Nickname = mysql_reader.GetString(1);
+                    user.Signature = mysql_reader.GetString(2);
+                    Log(user.Username);
+                }
+                else
+                {
+                    user = null;
+                }
+                mysql_conn.Close();
+
+                return user;
+            }
+            catch (Exception ex)
+            {
+                Log(ex.ToString());
+
+                
+
+                return null;
+            }
+        }
+
+        public static void Log(string source)
+        {
+            string path = "C:\\log.txt";
+            FileStream f = new FileStream(path, FileMode.Append, FileAccess.Write, FileShare.ReadWrite);
+            StreamWriter sw = new StreamWriter(f);
+            sw.WriteLine(source);
+            sw.Flush();
+            sw.Close();
+            f.Close();
         }
 
         internal Friend[] GetFriendList(string username)
         {
-            string sql_num = "SELECT COUNT(*) FROM user WHERE username IN ( SELECT friendname FROM friends WHERE username='" 
-                + username
-                + "')";
+            string sql_num = "SELECT COUNT(*) FROM user INNER JOIN friends " 
+                + "ON user.username = friends.friendname WHERE friends.username = '"
+                + username + "'";
             MySqlConnection conn = new MySqlConnection(str_conn);
             conn.Open();
             // 查询结果数目
@@ -86,9 +118,10 @@ namespace MysqlConnection
             conn.Close();
 
             // 查询结果
-            string sql = "SELECT nickname, signature FROM user WHERE username IN ( SELECT friendname FROM friends WHERE username='" 
-                + username
-                + "')";
+            string sql = "SELECT user.username, friends.notename, user.signature FROM user INNER JOIN friends " 
+                + "ON user.username = friends.friendname WHERE friends.username = '"
+                + username + "'";
+
             conn.Open();
             cmd = new MySqlCommand(sql, conn);
             reader = cmd.ExecuteReader();
@@ -98,11 +131,104 @@ namespace MysqlConnection
             int index = 0;
             while (reader.Read())
             {
-                friends[index] = new Friend(reader.GetString(0), reader.GetString(1)) ;
+                friends[index] = new Friend(
+                    reader.GetString(0),
+                    reader.GetString(1),
+                    reader.GetString(2)
+                    ) ;
                 ++index;
             }
+            conn.Close();
 
             return friends;
+        }
+
+        internal bool UpdateUser(string username, string nickname, string signature)
+        {
+            string sql = "UPDATE user SET nickname='"
+                + nickname + "', signature = '" 
+                + signature + "' WHERE username = '" 
+                + username +"'";
+            MySqlConnection conn = new MySqlConnection(str_conn);
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            int rows = cmd.ExecuteNonQuery();
+
+            conn.Close();
+            if (rows > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        internal bool UpdateNote(string username, string friendname, string notename)
+        {
+            string sql = "UPDATE friends SET notename = '"
+                + notename + "' WHERE username = '" 
+                + username + "' AND friendname = '" 
+                + friendname + "'";
+
+            MySqlConnection conn = new MySqlConnection(str_conn);
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            int rows = cmd.ExecuteNonQuery();
+            conn.Close();
+
+            if (rows > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        internal bool DeleteFriend(string username, string friend_username)
+        {
+            string sql = "DELETE FROM friends where friendname = '"
+                + friend_username + "' AND username = '" 
+                + username + "'";
+            MySqlConnection conn = new MySqlConnection(str_conn);
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            int rows = cmd.ExecuteNonQuery();
+            conn.Close();
+
+            if (rows > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        internal bool UpdatePw(string username, string password, string new_password)
+        {
+            string sql = "UPDATE user SET userpw='"
+                + new_password + "' WHERE username = '"
+                + username + "' AND userpw='"
+                + password + "'";
+            MySqlConnection conn = new MySqlConnection(str_conn);
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            int rows = cmd.ExecuteNonQuery();
+
+            conn.Close();
+            if (rows > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

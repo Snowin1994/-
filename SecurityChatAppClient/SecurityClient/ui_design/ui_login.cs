@@ -1,4 +1,4 @@
-﻿using SecurityServer;
+﻿using SecurityClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace SecurityClient.ui_design
 {
@@ -22,6 +23,8 @@ namespace SecurityClient.ui_design
         /// 客户端实例
         /// </summary>
         private SuperClient chat_client;
+
+        private User user;
 
         ////////////////////
         // 跨线程数据显示 //
@@ -35,12 +38,14 @@ namespace SecurityClient.ui_design
             InitializeComponent();
         }
 
-        private void SetLoginRsult(string result)
+        private void SetLoginRsult(string user_json)
         {
-            if(result == "Success")
+            user = JsonConvert.DeserializeObject<User>(user_json);
+
+            if(user != null)
             {
                 this.Hide();
-                ui_main_panel.GetInstance().Show();
+                ui_main_panel.GetInstance(user).Show();
             }
             else
             {
@@ -73,6 +78,7 @@ namespace SecurityClient.ui_design
         {
             instance = null;
             chat_client.Stop();
+            System.Environment.Exit(0);
 
             //BeginReceive.sock_connect.Dispose();
             //if(thread_receive_data != null && thread_receive_data.IsAlive)
@@ -85,8 +91,8 @@ namespace SecurityClient.ui_design
         {
             try
             {
-                // string string_host = "120.24.161.40";
-                string string_host = "127.0.0.1";
+                string string_host = "120.24.161.40";
+                // string string_host = "127.0.0.1";
                 int i_port = 2017;
                 chat_client = new SuperClient();
 
@@ -102,6 +108,15 @@ namespace SecurityClient.ui_design
                 MessageBox.Show(ex.Message);
 
                 System.Environment.Exit(0);
+            }
+        }
+
+        private void ui_login_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+                    btn_login_Click(this, EventArgs.Empty); break;
             }
         }
     }

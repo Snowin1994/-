@@ -1,6 +1,6 @@
 ﻿using SecurityClient.Command;
 using SecurityClient.ui_design;
-using SecurityServer;
+using SecurityClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -130,7 +130,7 @@ namespace SecurityClient
                         case "Login" : command = new Login(); break;
                         case "FriendList" : command = new FriendList(); break;
                         case "ReceiveMsg": command = new ReceiveMsg(); break;
-
+                        case "UpdatePw": command = new UpdatePw(); break;
 
 
 

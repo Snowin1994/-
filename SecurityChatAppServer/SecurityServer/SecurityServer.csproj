@@ -37,7 +37,7 @@
     </Reference>
     <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\DataBase\MysqlDotNet\Assemblies\v4.5\MySql.Data.dll</HintPath>
+      <HintPath>bin\Debug\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
     <Reference Include="SuperSocket.Common">
@@ -71,13 +71,18 @@
     <Compile Include="ChatRequestInfo.cs" />
     <Compile Include="ChatServer.cs" />
     <Compile Include="ChatSession.cs" />
+    <Compile Include="Command\DeleteFriend.cs" />
     <Compile Include="Command\FriendList.cs" />
     <Compile Include="Command\Info.cs" />
     <Compile Include="Command\Login.cs" />
     <Compile Include="Command\ReceiveMsg.cs" />
+    <Compile Include="Command\UpdateNote.cs" />
+    <Compile Include="Command\UpdatePw.cs" />
+    <Compile Include="Command\UpdateUser.cs" />
     <Compile Include="Common.cs" />
     <Compile Include="DbOperation\Friend.cs" />
     <Compile Include="DbOperation\MDO.cs" />
+    <Compile Include="DbOperation\User.cs" />
     <Compile Include="ExecuteResult.cs" />
     <Compile Include="ServerUI.cs">
       <SubType>Form</SubType>

@@ -13,17 +13,24 @@ namespace SecurityClient.ui_design
     public partial class ui_user_info : Form
     {
         private static ui_user_info instance;
+        private User user;
 
         private ui_user_info()
         {
             InitializeComponent();
         }
+        private ui_user_info(User _user)
+        {
+            InitializeComponent();
 
-        public static ui_user_info GetInstance()
+            user = _user;
+        }
+
+        public static ui_user_info GetInstance(User _user)
         {
             if(instance == null)
             {
-                instance = new ui_user_info();
+                instance = new ui_user_info(_user);
             }
 
             return instance;
@@ -32,6 +39,14 @@ namespace SecurityClient.ui_design
         private void btn_commit_Click(object sender, EventArgs e)
         {
             // 保存数据
+            string data = "UpdateUser:"
+                + user.Username + "," 
+                + tbx_nickname.Text + "," 
+                + tbx_signature.Text;
+            ui_login.GetInstance().ChatClient.Send(data);
+
+            ui_main_panel.GetInstance(user).lbl_nickname.Text = tbx_nickname.Text;
+            ui_main_panel.GetInstance(user).tbx_signature.Text = tbx_signature.Text;
 
             this.Close();
         }
@@ -43,7 +58,8 @@ namespace SecurityClient.ui_design
 
         private void ui_user_info_Load(object sender, EventArgs e)
         {
-
+            tbx_nickname.Text = user.Nickname;
+            tbx_signature.Text = user.Signature;
         }
 
         private void ui_user_info_FormClosing(object sender, FormClosingEventArgs e)

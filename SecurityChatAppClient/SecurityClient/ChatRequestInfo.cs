@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SuperSocket.SocketBase.Protocol;
 
-namespace SecurityServer
+namespace SecurityClient
 {
     public class ChatRequestInfo : IRequestInfo
     {

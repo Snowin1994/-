@@ -95,7 +95,6 @@
             this.tbx_password.PasswordChar = '*';
             this.tbx_password.Size = new System.Drawing.Size(123, 21);
             this.tbx_password.TabIndex = 3;
-            this.tbx_password.Text = "1234";
             // 
             // tbx_username
             // 
@@ -103,7 +102,7 @@
             this.tbx_username.Name = "tbx_username";
             this.tbx_username.Size = new System.Drawing.Size(123, 21);
             this.tbx_username.TabIndex = 2;
-            this.tbx_username.Text = "snowin1994";
+            this.tbx_username.Text = "lishengnan";
             // 
             // pictureBox2
             // 
@@ -135,12 +134,14 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "ui_login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ui_login_FormClosing);
             this.Load += new System.EventHandler(this.ui_login_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ui_login_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

@@ -12,6 +12,9 @@ namespace SecurityServer
     {
         private string username;
 
+        /// <summary>
+        /// session拥护者
+        /// </summary>
         public string Username
         {
             get { return username; }
@@ -20,6 +23,10 @@ namespace SecurityServer
 
         private const string STR_HEAD = "snowhead";
         private const string STR_TAIL = "snowtail";
+
+        /// <summary>
+        /// body 数据分隔符，默认 ','
+        /// </summary>
         public readonly string SPLITER = ",";
 
         protected override void OnSessionStarted()
