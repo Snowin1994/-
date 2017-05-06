@@ -11,6 +11,9 @@ namespace SecurityServer.Command
     {
         public override void ExecuteCommand(ChatSession session, ChatRequestInfo requestInfo)
         {
+            // ***解析数据，分离数据*** //
+            
+            // 找到分隔符位置
             string source = requestInfo.Body;
             int pos_1 = source.IndexOf(session.SPLITER);
             int pos_2 = source.IndexOf(session.SPLITER,pos_1 + 1);

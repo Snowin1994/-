@@ -25,7 +25,7 @@ namespace SecurityClient.Command
             ui_chat form_sender = (ui_chat)ui_chat.tables_friends[sender];
             form_sender.Invoke(
                 form_sender.show_text,
-                new Object[] { msg, form_sender.rtbx_receive_msg }
+                new Object[] { msg, msg_type, form_sender.rtbx_receive_msg }
                 );
         }
     }

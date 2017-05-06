@@ -31,7 +31,7 @@ namespace SecurityClient.ui_design
         // UI跨线程显示 //
         //////////////////
 
-        public delegate void ShowText(string text, System.Windows.Forms.RichTextBox control);
+        public delegate void ShowText(string text, string type, System.Windows.Forms.RichTextBox control);
         public ShowText show_text;
 
         private ui_chat()
@@ -59,16 +59,19 @@ namespace SecurityClient.ui_design
             return (ui_chat)tables_friends[username];
         }
 
-        private void SetMessage(string msg, System.Windows.Forms.RichTextBox control)
+        private void SetMessage(string msg, string type, System.Windows.Forms.RichTextBox control)
         {
-            // string rightSide = "\t\t\t\t\t\t\t\t\t";
-            // control.Text += SetFormat(msg);
-
-            control.Text += str_friend_notename + "  "
+            string source = str_friend_notename + "  "
                 + DateTime.Now.ToString("yyyy-MM-dd HH:mm") + System.Environment.NewLine
                 + "  " + msg + System.Environment.NewLine;
+            if(type == "common")
+            {
+                UpdateShowForm(source);
+            }
+            else
+            {
 
-            control.Focus();
+            }
         }
 
         private void ui_chat_Load(object sender, EventArgs e)
@@ -96,23 +99,52 @@ namespace SecurityClient.ui_design
             this.Close();
         }
 
+        private void UpdateShowForm(string msg)
+        {
+            rtbx_receive_msg.Focus();
+            rtbx_receive_msg.Select(rtbx_receive_msg.TextLength, 0);
+            rtbx_receive_msg.ScrollToCaret();
+            rtbx_receive_msg.AppendText(msg);
+        }
+
         private void btn_send_msg_Click(object sender, EventArgs e)
         {
-            if (tbx_send_msg.Text != "")
+            if (inputCheck(tbx_send_msg.Text))
             {
+                string msg_type = "common";
+                if(ckBox_moment.Checked == true)
+                {
+                    msg_type = "moment";
+                }
                 ui_login.GetInstance().ChatClient.Send("ReceiveMsg:"
                     + str_username
-                    + ",common,"
+                    + msg_type
                     + tbx_send_msg.Text);
 
                 // 刷新发送消息UI显示
-                rtbx_receive_msg.Text += this.SetFormat(tbx_send_msg.Text);
-                rtbx_receive_msg.Focus();
+                UpdateShowForm(this.SetFormat(tbx_send_msg.Text));
                 tbx_send_msg.Text = "";
             }
             else
             {
                 MessageBox.Show("发送内容不能为空，请重新输入！");
+            }
+        }
+
+        /// <summary>
+        /// 检查输入是否合法
+        /// </summary>
+        /// <param name="source">输入</param>
+        /// <returns>输入合法返回true</returns>
+        private bool inputCheck(string source)
+        {
+            if(source == "" || source == System.Environment.NewLine)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
 
@@ -129,12 +161,20 @@ namespace SecurityClient.ui_design
             tables_friends.Remove(str_username);
         }
 
-        private void ui_chat_KeyDown(object sender, KeyEventArgs e)
+        private void tbx_send_msg_TextChanged(object sender, EventArgs e)
         {
-            switch(e.KeyCode)
+            if(tbx_send_msg.Text == System.Environment.NewLine)
             {
-                case Keys.Enter:
-                    btn_send_msg_Click(this, EventArgs.Empty); break;
+                tbx_send_msg.Text = "";
+                tbx_send_msg.Focus();
+            }
+        }
+
+        private void tbx_send_msg_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                btn_send_msg_Click(this, EventArgs.Empty);
             }
         }
     }

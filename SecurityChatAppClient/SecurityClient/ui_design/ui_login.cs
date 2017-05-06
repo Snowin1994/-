@@ -91,8 +91,8 @@ namespace SecurityClient.ui_design
         {
             try
             {
-                string string_host = "120.24.161.40";
-                // string string_host = "127.0.0.1";
+                // string string_host = "120.24.161.40";
+                string string_host = "127.0.0.1";
                 int i_port = 2017;
                 chat_client = new SuperClient();
 

@@ -9,6 +9,9 @@ using SuperSocket.SocketBase.Protocol;
 
 namespace SecurityServer.Command
 {
+    /// <summary>
+    /// test API
+    /// </summary>
     public class Info : CommandBase<ChatSession, ChatRequestInfo>
     {
         public override void ExecuteCommand(ChatSession session, ChatRequestInfo requestInfo)

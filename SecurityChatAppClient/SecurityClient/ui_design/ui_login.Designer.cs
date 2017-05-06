@@ -95,6 +95,7 @@
             this.tbx_password.PasswordChar = '*';
             this.tbx_password.Size = new System.Drawing.Size(123, 21);
             this.tbx_password.TabIndex = 3;
+            this.tbx_password.Text = "1234";
             // 
             // tbx_username
             // 
@@ -102,7 +103,7 @@
             this.tbx_username.Name = "tbx_username";
             this.tbx_username.Size = new System.Drawing.Size(123, 21);
             this.tbx_username.TabIndex = 2;
-            this.tbx_username.Text = "lishengnan";
+            this.tbx_username.Text = "snowin1994";
             // 
             // pictureBox2
             // 

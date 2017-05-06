@@ -30,7 +30,7 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.ckBox_moment = new System.Windows.Forms.CheckBox();
             this.rtbx_receive_msg = new System.Windows.Forms.RichTextBox();
             this.btn_chat_history = new System.Windows.Forms.Button();
             this.tbx_send_msg = new System.Windows.Forms.TextBox();
@@ -65,7 +65,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.checkBox1);
+            this.splitContainer1.Panel1.Controls.Add(this.ckBox_moment);
             this.splitContainer1.Panel1.Controls.Add(this.rtbx_receive_msg);
             this.splitContainer1.Panel1.Controls.Add(this.btn_chat_history);
             // 
@@ -77,21 +77,22 @@
             this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 0;
             // 
-            // checkBox1
+            // ckBox_moment
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(325, 304);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(72, 16);
-            this.checkBox1.TabIndex = 7;
-            this.checkBox1.Text = "阅后即焚";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.ckBox_moment.AutoSize = true;
+            this.ckBox_moment.Location = new System.Drawing.Point(325, 304);
+            this.ckBox_moment.Name = "ckBox_moment";
+            this.ckBox_moment.Size = new System.Drawing.Size(72, 16);
+            this.ckBox_moment.TabIndex = 7;
+            this.ckBox_moment.Text = "阅后即焚";
+            this.ckBox_moment.UseVisualStyleBackColor = true;
             // 
             // rtbx_receive_msg
             // 
             this.rtbx_receive_msg.Location = new System.Drawing.Point(1, 1);
             this.rtbx_receive_msg.Name = "rtbx_receive_msg";
             this.rtbx_receive_msg.ReadOnly = true;
+            this.rtbx_receive_msg.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
             this.rtbx_receive_msg.Size = new System.Drawing.Size(494, 293);
             this.rtbx_receive_msg.TabIndex = 6;
             this.rtbx_receive_msg.Text = "";
@@ -113,6 +114,8 @@
             this.tbx_send_msg.Name = "tbx_send_msg";
             this.tbx_send_msg.Size = new System.Drawing.Size(494, 128);
             this.tbx_send_msg.TabIndex = 0;
+            this.tbx_send_msg.TextChanged += new System.EventHandler(this.tbx_send_msg_TextChanged);
+            this.tbx_send_msg.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbx_send_msg_KeyDown);
             // 
             // panel2
             // 
@@ -176,7 +179,6 @@
             this.Text = "与 *** 聊天中";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ui_chat_FormClosing);
             this.Load += new System.EventHandler(this.ui_chat_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ui_chat_KeyDown);
             this.panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
@@ -201,7 +203,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox tbx_send_msg;
         private System.Windows.Forms.RichTextBox richTextBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox ckBox_moment;
         public System.Windows.Forms.RichTextBox rtbx_receive_msg;
 
 
