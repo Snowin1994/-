@@ -39,6 +39,14 @@ namespace SecurityClient
         /// </summary>
         private const int START_POS = 0;
 
+        /// <summary>
+        /// 服务器ip地址
+        /// </summary>
+        private readonly string STR_HOST = "127.0.0.1";
+        // private readonly string STR_HOST = "120.24.161.40";
+
+        private readonly int I_PORT = 2017;
+
         //private 
 
         private ThreadMessage thread_sender;
@@ -82,6 +90,40 @@ namespace SecurityClient
                 return false;
             }
         }
+
+        public bool Start()
+        {
+            try
+            {
+                IPAddress ip = IPAddress.Parse(STR_HOST);
+                IPEndPoint ip_port = new IPEndPoint(ip, I_PORT);
+                socket_connect.Connect(ip_port);
+                thread_receive_client = new Thread(() =>
+                {
+                    socket_connect.BeginReceive(
+                        b_data_buffer,
+                        START_POS,
+                        b_data_buffer.Length,
+                        SocketFlags.None,
+                        new AsyncCallback(ReceiveMessage),
+                        socket_connect
+                        );
+                });
+                thread_receive_client.IsBackground = true;
+                thread_receive_client.Start();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // 异常处理
+                // 日志记录
+                Stop();
+
+                return false;
+            }
+        }
+
         public bool Stop()
         {
             try
@@ -131,7 +173,7 @@ namespace SecurityClient
                         case "FriendList" : command = new FriendList(); break;
                         case "ReceiveMsg": command = new ReceiveMsg(); break;
                         case "UpdatePw": command = new UpdatePw(); break;
-
+                        case "SearchFriend": command = new SearchFriend(); break;
 
 
                     }

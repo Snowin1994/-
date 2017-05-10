@@ -104,6 +104,7 @@
     <Compile Include="Command\ICommand.cs" />
     <Compile Include="Command\Login.cs" />
     <Compile Include="Command\ReceiveMsg.cs" />
+    <Compile Include="Command\SearchFriend.cs" />
     <Compile Include="Command\UpdatePw.cs" />
     <Compile Include="ExecuteResult.cs" />
     <Compile Include="Friend.cs" />

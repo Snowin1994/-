@@ -26,24 +26,6 @@ namespace MysqlConnection
             str_conn = "Database=db_chat_server;Data Source=localhost;User Id=root;Password=123456;Charset=utf8";
         }
 
-        public void SelectAll()
-        {
-            string sql = "select * from user";
-
-            //mysql_cmd = new MySqlCommand(sql, mysql_conn);
-            //mysql_reader = mysql_cmd.ExecuteReader();
-            //while (mysql_reader.Read())
-            //{
-            //    Console.WriteLine(mysql_reader.GetString(0));
-            //    Console.WriteLine(mysql_reader.GetString(1));
-            //    Console.WriteLine(mysql_reader.GetString(2));
-            //    Console.WriteLine(mysql_reader.GetString(3));
-            //    Console.WriteLine(mysql_reader.GetString(4));
-
-            //    Console.WriteLine();
-            //}
-        }
-
         internal User Login(string username, string password)
         {
             try
@@ -228,6 +210,66 @@ namespace MysqlConnection
             else
             {
                 return false;
+            }
+        }
+
+        internal User SearchFriend(string username)
+        {
+            try
+            {
+                string sql = "SELECT username, nickname, signature from user WHERE username='"
+                    + username
+                    + "';";
+                MySqlConnection mysql_conn = new MySqlConnection(str_conn);
+                mysql_conn.Open();
+
+                MySqlCommand mysql_cmd = new MySqlCommand(sql, mysql_conn);
+                MySqlDataReader mysql_reader = mysql_cmd.ExecuteReader();
+
+                User user = new User();
+                if (mysql_reader.Read())
+                {
+                    user.Username = mysql_reader.GetString(0);
+                    user.Nickname = mysql_reader.GetString(1);
+                    user.Signature = mysql_reader.GetString(2);
+                }
+                else
+                {
+                    user = null;
+                }
+                mysql_conn.Close();
+
+                return user;
+            }
+            catch (Exception ex)
+            {
+                Log(ex.ToString());
+
+
+
+                return null;
+            }
+        }
+
+        internal bool AddFriend(string username, string frined_username, string frind_notename)
+        {
+            string sql = "INSERT INTO friends VALUES('" 
+                + frined_username + "', '" 
+                + username + "', '" 
+                + frind_notename + "')";
+            MySqlConnection conn = new MySqlConnection(str_conn);
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            int rows = cmd.ExecuteNonQuery();
+
+            conn.Close();
+            if (rows > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return true;
             }
         }
     }

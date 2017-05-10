@@ -11,22 +11,33 @@ namespace SecurityClient.Command
     {
         public void ExecuteCommand(string body)
         {
-            const string SPLITER = ",";
-
-            string source = body;
-            int pos_1 = source.IndexOf(SPLITER);
-            int pos_2 = source.IndexOf(SPLITER, pos_1 + 1);
-
-            // data 顺序：发送者，消息类型，消息
-            string sender = source.Substring(0, pos_1);
-            string msg_type = source.Substring(pos_1 + 1, pos_2 - pos_1 - SPLITER.Length);
-            string msg = source.Substring(pos_2 + SPLITER.Length);
-
-            ui_chat form_sender = (ui_chat)ui_chat.tables_friends[sender];
-            form_sender.Invoke(
-                form_sender.show_text,
-                new Object[] { msg, msg_type, form_sender.rtbx_receive_msg }
+            ui_main_panel form_main = ui_main_panel.GetInstance(new User());
+            form_main.Invoke(
+                form_main.handout,
+                new Object[] { body}
                 );
+
+            //ui_chat form_chat_with = null;
+            //foreach (Friend friend in ui_main_panel.GetInstance(new User()).friends_list)
+            //{
+            //    if (friend.Username == sender)
+            //    {
+            //        form_chat_with = ui_chat.GetInstance(friend.Username, friend.Notename);
+            //        form_chat_with.Show();
+            //    }
+            //}
+
+            //if (form_chat_with != null)
+            //{
+            //    form_chat_with.Invoke(
+            //        form_chat_with.show_text,
+            //        new Object[] { msg, msg_type, form_chat_with.rtbx_receive_msg }
+            //        );
+            //}
+            //else
+            //{
+            //    // 陌生人
+            //}
         }
     }
 }

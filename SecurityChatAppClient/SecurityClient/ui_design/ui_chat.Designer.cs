@@ -96,6 +96,7 @@
             this.rtbx_receive_msg.Size = new System.Drawing.Size(494, 293);
             this.rtbx_receive_msg.TabIndex = 6;
             this.rtbx_receive_msg.Text = "";
+            this.rtbx_receive_msg.Click += new System.EventHandler(this.rtbx_receive_msg_Click);
             // 
             // btn_chat_history
             // 

@@ -71,11 +71,13 @@
     <Compile Include="ChatRequestInfo.cs" />
     <Compile Include="ChatServer.cs" />
     <Compile Include="ChatSession.cs" />
+    <Compile Include="Command\AddFriend.cs" />
     <Compile Include="Command\DeleteFriend.cs" />
     <Compile Include="Command\FriendList.cs" />
     <Compile Include="Command\Info.cs" />
     <Compile Include="Command\Login.cs" />
     <Compile Include="Command\ReceiveMsg.cs" />
+    <Compile Include="Command\SearchFriend.cs" />
     <Compile Include="Command\UpdateNote.cs" />
     <Compile Include="Command\UpdatePw.cs" />
     <Compile Include="Command\UpdateUser.cs" />

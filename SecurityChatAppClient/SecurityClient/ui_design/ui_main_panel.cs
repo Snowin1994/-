@@ -19,6 +19,11 @@ namespace SecurityClient.ui_design
         public static User user;
         public Friend[] friends_list;
 
+        // 接受消息并分发到对应的好友窗体
+        public delegate void Handout(string body);
+        public Handout handout;
+
+
         //////////////////
         // UI跨线程显示 //
         //////////////////
@@ -59,6 +64,44 @@ namespace SecurityClient.ui_design
 
         }
 
+        private void SetForm(string body)
+        {
+            const string SPLITER = ",";
+
+            string source = body;
+            int pos_1 = source.IndexOf(SPLITER);
+            int pos_2 = source.IndexOf(SPLITER, pos_1 + 1);
+
+            // data 顺序：发送者，消息类型，消息
+            string sender = source.Substring(0, pos_1);
+            string msg_type = source.Substring(pos_1 + 1, pos_2 - pos_1 - SPLITER.Length);
+            string msg = source.Substring(pos_2 + SPLITER.Length);
+
+            ui_chat form_chat_with = null;
+            foreach (Friend friend in friends_list)
+            {
+                if (friend.Username == sender)
+                {
+                    form_chat_with = ui_chat.GetInstance(friend.Username, friend.Notename);
+                    form_chat_with.Show();
+
+                    break;
+                }
+            }
+
+            if (form_chat_with != null)
+            {
+                form_chat_with.Invoke(
+                    form_chat_with.show_text,
+                    new Object[] { msg, msg_type, form_chat_with.rtbx_receive_msg }
+                    );
+            }
+            else
+            {
+                // 陌生人
+            }
+        }
+
         private void ui_main_panel_Load(object sender, EventArgs e)
         {
             // tips绑定
@@ -66,6 +109,7 @@ namespace SecurityClient.ui_design
             tip_main_panel.SetToolTip(picBox_user_icon, "单击修改个人信息");
 
             show_list = new ShowList(SetList);
+            handout = new Handout(SetForm);
             
             // 设置用户昵称、签名
             this.lbl_nickname.Text = user.Nickname;
@@ -84,6 +128,7 @@ namespace SecurityClient.ui_design
                     {
                         ui_chat form_chat_with = ui_chat.GetInstance(friend.Username, friend.Notename);
                         form_chat_with.Show();
+                        form_chat_with.Activate();
 
                         return;
                     }

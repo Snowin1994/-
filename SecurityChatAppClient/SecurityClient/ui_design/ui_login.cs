@@ -76,15 +76,19 @@ namespace SecurityClient.ui_design
 
         private void ui_login_FormClosing(object sender, FormClosingEventArgs e)
         {
-            instance = null;
-            chat_client.Stop();
-            System.Environment.Exit(0);
-
-            //BeginReceive.sock_connect.Dispose();
-            //if(thread_receive_data != null && thread_receive_data.IsAlive)
-            //{
-            //    thread_receive_data.Abort();
-            //}
+            try
+            {
+                chat_client.Stop();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                instance = null;
+                System.Environment.Exit(0);
+            }
         }
 
         private void ui_login_Load(object sender, EventArgs e)
@@ -92,11 +96,12 @@ namespace SecurityClient.ui_design
             try
             {
                 // string string_host = "120.24.161.40";
-                string string_host = "127.0.0.1";
-                int i_port = 2017;
+                // string string_host = "127.0.0.1";
+                // int i_port = 2017;
+
                 chat_client = new SuperClient();
 
-                if (!chat_client.Start(string_host, i_port))
+                if (!chat_client.Start())
                 {
                     throw new Exception("请检查网络连接");
                 }
