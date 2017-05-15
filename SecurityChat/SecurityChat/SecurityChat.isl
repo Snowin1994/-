@@ -344,7 +344,14 @@
 		<row><td>ISX_DEFAULTCOMPONENT2</td><td>{C15B9ABE-101C-48E6-8B90-E02DD1437AB4}</td><td>SNOWINWORKSPACE</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>NewComponent1</td><td>{CD7785BB-FBC3-40D5-8C1E-09FEE045F3B5}</td><td>INSTALLDIR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>NewComponent2</td><td>{A613685D-3363-4A99-9762-EAA5577603A1}</td><td>INSTALLDIR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>SecurityClient.exe</td><td>{FAED77DB-95C1-467B-83F3-2EE93E0A4010}</td><td>INSTALLDIR</td><td>2</td><td/><td>securityclient.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>Newtonsoft.Json.dll</td><td>{1E2A085D-E944-4225-8B54-FC41310BD749}</td><td>INSTALLDIR</td><td>2</td><td/><td>newtonsoft.json.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>SecurityClient.exe</td><td>{7E8FAE7C-16ED-45FB-B54D-0CE334615907}</td><td>INSTALLDIR</td><td>2</td><td/><td>securityclient.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>SecurityClient.vshost.exe</td><td>{5E6A203A-A471-4F37-95A4-1F58404C7301}</td><td>INSTALLDIR</td><td>2</td><td/><td>securityclient.vshost.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>SuperSocket.Common.dll</td><td>{9C00922B-4C36-444A-8D2F-4746CE2FFE72}</td><td>INSTALLDIR</td><td>2</td><td/><td>supersocket.common.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>SuperSocket.Facility.dll</td><td>{705E10A7-DF1A-44A7-96F7-67704D8F0580}</td><td>INSTALLDIR</td><td>2</td><td/><td>supersocket.facility.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>SuperSocket.SocketBase.dll</td><td>{55EAC3B1-4979-424E-AF65-AF80FA19D996}</td><td>INSTALLDIR</td><td>2</td><td/><td>supersocket.socketbase.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>SuperSocket.SocketEngine.dll</td><td>{1058F608-4956-418C-9A6E-AACE6615E81D}</td><td>INSTALLDIR</td><td>2</td><td/><td>supersocket.socketengine.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>log4net.dll</td><td>{97F4F3D7-CABE-4367-88E9-CE1585F9A374}</td><td>INSTALLDIR</td><td>2</td><td/><td>log4net.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 	</table>
 
 	<table name="Condition">
@@ -1179,7 +1186,9 @@
 		<row><td>USERPROFILE</td><td>TARGETDIR</td><td>.:USERPR~1|UserProfile</td><td/><td>0</td><td/></row>
 		<row><td>WindowsFolder</td><td>TARGETDIR</td><td>.:Windows</td><td/><td>0</td><td/></row>
 		<row><td>WindowsVolume</td><td>TARGETDIR</td><td>.:WinRoot</td><td/><td>0</td><td/></row>
+		<row><td>company_name</td><td>ProgramMenuFolder</td><td>木南科技</td><td/><td>1</td><td/></row>
 		<row><td>product_name</td><td>snowin_1_snowinworkspace</td><td>安全聊~1|安全聊天工具</td><td/><td>1</td><td/></row>
+		<row><td>product_name1</td><td>company_name</td><td>安全聊~1|安全聊天工具</td><td/><td>1</td><td/></row>
 		<row><td>snowin_1_snowinworkspace</td><td>ProgramMenuFolder</td><td>SNOWIN~1|SnowinWorkspace</td><td/><td>1</td><td/></row>
 	</table>
 
@@ -1876,7 +1885,14 @@
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT2</td></row>
 		<row><td>AlwaysInstall</td><td>NewComponent1</td></row>
 		<row><td>AlwaysInstall</td><td>NewComponent2</td></row>
+		<row><td>AlwaysInstall</td><td>Newtonsoft.Json.dll</td></row>
 		<row><td>AlwaysInstall</td><td>SecurityClient.exe</td></row>
+		<row><td>AlwaysInstall</td><td>SecurityClient.vshost.exe</td></row>
+		<row><td>AlwaysInstall</td><td>SuperSocket.Common.dll</td></row>
+		<row><td>AlwaysInstall</td><td>SuperSocket.Facility.dll</td></row>
+		<row><td>AlwaysInstall</td><td>SuperSocket.SocketBase.dll</td></row>
+		<row><td>AlwaysInstall</td><td>SuperSocket.SocketEngine.dll</td></row>
+		<row><td>AlwaysInstall</td><td>log4net.dll</td></row>
 	</table>
 
 	<table name="File">
@@ -1891,8 +1907,19 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I4">ISAttributes</col>
 		<col def="S72">ISComponentSubFolder_</col>
+		<row><td>log4net.dll</td><td>log4net.dll</td><td>log4net.dll</td><td>0</td><td/><td/><td/><td>1</td><td>E:\Development\MyProject\GraduationDesign\SecurityChatAppClient\SecurityClient\bin\Release\log4net.dll</td><td>1</td><td/></row>
+		<row><td>newtonsoft.json.dll</td><td>Newtonsoft.Json.dll</td><td>NEWTON~1.DLL|Newtonsoft.Json.dll</td><td>0</td><td/><td/><td/><td>1</td><td>E:\Development\MyProject\GraduationDesign\SecurityChatAppClient\SecurityClient\bin\Release\Newtonsoft.Json.dll</td><td>1</td><td/></row>
+		<row><td>securityclient.application</td><td>ISX_DEFAULTCOMPONENT</td><td>SECURI~1.APP|SecurityClient.application</td><td>0</td><td/><td/><td/><td>1</td><td>E:\Development\MyProject\GraduationDesign\SecurityChatAppClient\SecurityClient\bin\Release\SecurityClient.application</td><td>1</td><td/></row>
 		<row><td>securityclient.exe</td><td>SecurityClient.exe</td><td>SECURI~1.EXE|SecurityClient.exe</td><td>0</td><td/><td/><td/><td>1</td><td>E:\Development\MyProject\GraduationDesign\SecurityChatAppClient\SecurityClient\bin\Release\SecurityClient.exe</td><td>1</td><td/></row>
 		<row><td>securityclient.exe.config</td><td>ISX_DEFAULTCOMPONENT</td><td>SECURI~1.CON|SecurityClient.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>E:\Development\MyProject\GraduationDesign\SecurityChatAppClient\SecurityClient\bin\Release\SecurityClient.exe.config</td><td>1</td><td/></row>
+		<row><td>securityclient.exe.manifest</td><td>ISX_DEFAULTCOMPONENT</td><td>SECURI~1.MAN|SecurityClient.exe.manifest</td><td>0</td><td/><td/><td/><td>1</td><td>E:\Development\MyProject\GraduationDesign\SecurityChatAppClient\SecurityClient\bin\Release\SecurityClient.exe.manifest</td><td>1</td><td/></row>
+		<row><td>securityclient.pdb</td><td>ISX_DEFAULTCOMPONENT</td><td>SECURI~1.PDB|SecurityClient.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>E:\Development\MyProject\GraduationDesign\SecurityChatAppClient\SecurityClient\bin\Release\SecurityClient.pdb</td><td>1</td><td/></row>
+		<row><td>securityclient.vshost.exe</td><td>SecurityClient.vshost.exe</td><td>SECURI~1.EXE|SecurityClient.vshost.exe</td><td>0</td><td/><td/><td/><td>1</td><td>E:\Development\MyProject\GraduationDesign\SecurityChatAppClient\SecurityClient\bin\Release\SecurityClient.vshost.exe</td><td>1</td><td/></row>
+		<row><td>securityclient.vshost.exe.co</td><td>ISX_DEFAULTCOMPONENT</td><td>SECURI~1.CON|SecurityClient.vshost.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>E:\Development\MyProject\GraduationDesign\SecurityChatAppClient\SecurityClient\bin\Release\SecurityClient.vshost.exe.config</td><td>1</td><td/></row>
+		<row><td>supersocket.common.dll</td><td>SuperSocket.Common.dll</td><td>SUPERS~1.DLL|SuperSocket.Common.dll</td><td>0</td><td/><td/><td/><td>1</td><td>E:\Development\MyProject\GraduationDesign\SecurityChatAppClient\SecurityClient\bin\Release\SuperSocket.Common.dll</td><td>1</td><td/></row>
+		<row><td>supersocket.facility.dll</td><td>SuperSocket.Facility.dll</td><td>SUPERS~1.DLL|SuperSocket.Facility.dll</td><td>0</td><td/><td/><td/><td>1</td><td>E:\Development\MyProject\GraduationDesign\SecurityChatAppClient\SecurityClient\bin\Release\SuperSocket.Facility.dll</td><td>1</td><td/></row>
+		<row><td>supersocket.socketbase.dll</td><td>SuperSocket.SocketBase.dll</td><td>SUPERS~1.DLL|SuperSocket.SocketBase.dll</td><td>0</td><td/><td/><td/><td>1</td><td>E:\Development\MyProject\GraduationDesign\SecurityChatAppClient\SecurityClient\bin\Release\SuperSocket.SocketBase.dll</td><td>1</td><td/></row>
+		<row><td>supersocket.socketengine.dll</td><td>SuperSocket.SocketEngine.dll</td><td>SUPERS~1.DLL|SuperSocket.SocketEngine.dll</td><td>0</td><td/><td/><td/><td>1</td><td>E:\Development\MyProject\GraduationDesign\SecurityChatAppClient\SecurityClient\bin\Release\SuperSocket.SocketEngine.dll</td><td>1</td><td/></row>
 	</table>
 
 	<table name="FileSFPCatalog">
@@ -2042,7 +2069,14 @@
 		<row><td>ISX_DEFAULTCOMPONENT2</td><td/><td/><td>_961B39CB_F421_4BB2_B241_BF5A61F6D5FB_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>NewComponent1</td><td/><td/><td>_2E63C261_733D_42C6_8F5E_FC742F2E4511_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>NewComponent2</td><td/><td/><td>_9C31AD4C_1D15_4BA4_AA3B_62D6F8C39EE4_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>SecurityClient.exe</td><td/><td/><td>_164E4FB1_CE25_4624_8A7D_60F7A6C97AD9_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>Newtonsoft.Json.dll</td><td/><td/><td>_31A781B5_17AB_4AED_A0F3_21F2E9E9035D_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>SecurityClient.exe</td><td/><td/><td>_24CD48EE_89FA_4E37_B829_02C5A2584A5C_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>SecurityClient.vshost.exe</td><td/><td/><td>_9561DA96_F416_4240_8925_E08226A8808D_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>SuperSocket.Common.dll</td><td/><td/><td>_904BDAD7_5C03_4B9C_8691_90AFDAA8459B_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>SuperSocket.Facility.dll</td><td/><td/><td>_58532126_96D7_4620_B464_9FD30A53F8E9_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>SuperSocket.SocketBase.dll</td><td/><td/><td>_D23F4F91_1FE5_43DA_A7F7_C44B3655E958_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>SuperSocket.SocketEngine.dll</td><td/><td/><td>_61146C13_BEAC_47B5_BB38_C4045462DBA2_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>log4net.dll</td><td/><td/><td>_0A7E1D53_36BF_4DEE_BE3A_70127A526344_FILTER</td><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="ISCustomActionReference">
@@ -3479,6 +3513,10 @@
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME4</td><td>2052</td><td>LAUNCH~1.EXE|Launch SecurityClient.vshost.exe</td><td>0</td><td/><td>849697569</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME5</td><td>2052</td><td>安全聊天工具.exe</td><td>0</td><td/><td>849697569</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME6</td><td>2052</td><td>卸载程序</td><td>0</td><td/><td>849697569</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME7</td><td>1033</td><td/><td>0</td><td/><td>1789207949</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME7</td><td>2052</td><td>SecurityClient.exe</td><td>0</td><td/><td>1789226381</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME8</td><td>1033</td><td/><td>0</td><td/><td>1789207949</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME8</td><td>2052</td><td>LAUNCH~1.EXE|Launch SecurityClient.vshost.exe</td><td>0</td><td/><td>1789207949</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO</td><td>2052</td><td>从以下服务器列表中选择要连接的数据库服务器。</td><td>0</td><td/><td>849697569</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_DB</td><td>2052</td><td>从以下的编录名称列表中，选择您希望将其作为目标的数据库编录。</td><td>0</td><td/><td>849697569</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_TEMPLATE</td><td>2052</td><td>[IS_SQLBROWSE_INTRO]</td><td>0</td><td/><td>849697569</td></row>
@@ -3773,6 +3811,8 @@
 		<row><td>ID_STRING3</td><td>2052</td><td>LAUNCH~1.EXE|Launch setup.exe</td><td>0</td><td/><td>849697569</td></row>
 		<row><td>ID_STRING4</td><td>2052</td><td>install.exe</td><td>0</td><td/><td>849697569</td></row>
 		<row><td>ID_STRING5</td><td>2052</td><td>安全聊天工具.exe</td><td>0</td><td/><td>849697569</td></row>
+		<row><td>ID_STRING6</td><td>1033</td><td>SecurityClient.exe</td><td>0</td><td/><td>1789228429</td></row>
+		<row><td>ID_STRING6</td><td>2052</td><td>SecurityClient.exe</td><td>0</td><td/><td>1789228429</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>2052</td><td>系统将不安装此功能。</td><td>0</td><td/><td>849697569</td></row>
 	</table>
 
@@ -3885,6 +3925,9 @@
 		<row><td>SecurityClient.exe_3EFCEC67279B4A8CA9CF4CC14CD99B3B.exe</td><td/><td>E:\Development\MyProject\GraduationDesign\pic\logo.ico</td><td>0</td></row>
 		<row><td>SecurityClient.exe_707F95BE50734457913466711D5ADCFF.exe</td><td/><td>E:\Development\MyProject\GraduationDesign\pic\logo.ico</td><td>0</td></row>
 		<row><td>SecurityClient.exe_9D34A73E726D4BBCB2E616D15204B690.exe</td><td/><td>E:\Development\MyProject\GraduationDesign\pic\logo.ico</td><td>0</td></row>
+		<row><td>SecurityClient.exe_B278654C02834190A4EFEAE100A01B89.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
+		<row><td>SecurityClient.exe_C131CA64A86A49E1A9BAA810EE31C9CE.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
+		<row><td>SecurityClient.vsh_68E381BF5B27498D973A0FF3ECC3A77F.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
 		<row><td>Shortcut_ECC415C4FEB143ED9143F480D322547B.exe</td><td/><td>D:\Application\2013LE\Redist\Language Independent\OS Independent\uninstall.ico</td><td>0</td></row>
 		<row><td>setup.exe1_795F343FFB6146A4A063741B05D96586.exe</td><td/><td>C:\Users\Snowin\Desktop\setup.exe</td><td>0</td></row>
 		<row><td>setup.exe_73756FEF9A594BCFA8ADD7E9508ADC11.exe</td><td/><td>C:\Users\Snowin\Desktop\setup.exe</td><td>0</td></row>
@@ -4473,9 +4516,10 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="L255">FileName</col>
 		<col def="s72">DirProperty</col>
 		<col def="i2">InstallMode</col>
-		<row><td>FileKey1</td><td>SecurityClient.exe</td><td/><td>snowin_1_snowinworkspace</td><td>2</td></row>
-		<row><td>FileKey2</td><td>SecurityClient.exe</td><td/><td>product_name</td><td>2</td></row>
-		<row><td>SecurityClient.exe</td><td>SecurityClient.exe</td><td/><td>product_name</td><td>2</td></row>
+		<row><td>FileKey1</td><td>SecurityClient.exe</td><td/><td>company_name</td><td>2</td></row>
+		<row><td>FileKey2</td><td>SecurityClient.exe</td><td/><td>product_name1</td><td>2</td></row>
+		<row><td>SecurityClient.exe</td><td>SecurityClient.exe</td><td/><td>product_name1</td><td>2</td></row>
+		<row><td>SecurityClient.vshost.exe</td><td>SecurityClient.vshost.exe</td><td/><td>product_name1</td><td>2</td></row>
 		<row><td>Shortcut</td><td>NewComponent2</td><td/><td>product_name</td><td>2</td></row>
 	</table>
 
@@ -4562,8 +4606,9 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="S255">ISComments</col>
 		<col def="S255">ISShortcutName</col>
 		<col def="I4">ISAttributes</col>
-		<row><td>SecurityClient.exe</td><td>product_name</td><td>##IDS_SHORTCUT_DISPLAY_NAME5##</td><td>SecurityClient.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>SecurityClient.exe_1F5B6D8F1457400298D90477D1EF4FAA.exe</td><td>0</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
-		<row><td>SecurityClient.exe1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME5##</td><td>SecurityClient.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>SecurityClient.exe_3EFCEC67279B4A8CA9CF4CC14CD99B3B.exe</td><td>0</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>SecurityClient.exe</td><td>product_name1</td><td>##IDS_SHORTCUT_DISPLAY_NAME7##</td><td>SecurityClient.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>SecurityClient.exe_C131CA64A86A49E1A9BAA810EE31C9CE.exe</td><td>0</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>SecurityClient.exe1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME7##</td><td>SecurityClient.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>SecurityClient.exe_B278654C02834190A4EFEAE100A01B89.exe</td><td>0</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>SecurityClient.vshost.exe</td><td>product_name1</td><td>##IDS_SHORTCUT_DISPLAY_NAME8##</td><td>SecurityClient.vshost.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>SecurityClient.vsh_68E381BF5B27498D973A0FF3ECC3A77F.exe</td><td>0</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
 		<row><td>Shortcut</td><td>product_name</td><td>##IDS_SHORTCUT_DISPLAY_NAME6##</td><td>NewComponent2</td><td>[SystemFolder]msiexec.exe</td><td>/x {02D7B6B6-2CD8-4F46-9400-7655980DD881}</td><td/><td/><td>Shortcut_ECC415C4FEB143ED9143F480D322547B.exe</td><td>0</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
 	</table>
 

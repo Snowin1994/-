@@ -264,6 +264,10 @@ namespace SecurityClient.ui_design
             var select_line = rtbx_receive_msg.GetLineFromCharIndex(select_start);
             
             // rtbx_receive_msg.Select(select_start, 0);
+            if (rtbx_receive_msg.Lines.Length == 0)
+            {
+                return;
+            }
             var select_len = rtbx_receive_msg.Lines[select_line].Length;
 
             var line_start = rtbx_receive_msg.GetFirstCharIndexFromLine(select_line);
