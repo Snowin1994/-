@@ -45,6 +45,15 @@ namespace MysqlConnection
                 MySqlCommand mysql_cmd = new MySqlCommand(sql, mysql_conn);
                 MySqlDataReader mysql_reader = mysql_cmd.ExecuteReader();
 
+                ///////////////////////////
+                // 参数绑定测试 删除 2017/5/19
+
+                //mysql_cmd.CommandText = sql;
+                //mysql_cmd.Parameters.Add();
+
+
+                ///////////////////////////
+
                 User user = new User();
                 if (mysql_reader.Read())
                 {
