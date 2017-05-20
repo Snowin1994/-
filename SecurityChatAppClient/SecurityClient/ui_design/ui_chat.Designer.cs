@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ui_chat));
             this.panel1 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.ckBox_moment = new System.Windows.Forms.CheckBox();
@@ -106,6 +107,7 @@
             this.btn_chat_history.TabIndex = 5;
             this.btn_chat_history.Text = "聊天记录";
             this.btn_chat_history.UseVisualStyleBackColor = true;
+            this.btn_chat_history.Visible = false;
             this.btn_chat_history.Click += new System.EventHandler(this.btn_chat_history_Click);
             // 
             // tbx_send_msg
@@ -173,6 +175,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "ui_chat";

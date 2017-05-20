@@ -42,8 +42,8 @@ namespace SecurityClient
         /// <summary>
         /// 服务器ip地址
         /// </summary>
-        // private readonly string STR_HOST = "127.0.0.1";
-        private readonly string STR_HOST = "120.24.161.40";
+        private readonly string STR_HOST = "127.0.0.1";
+        // private readonly string STR_HOST = "120.24.161.40";
 
         private readonly int I_PORT = 2017;
 

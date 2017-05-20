@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ui_main_panel));
             this.lbl_nickname = new System.Windows.Forms.Label();
             this.tbx_signature = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -228,6 +229,7 @@
             this.Controls.Add(this.lbl_nickname);
             this.Controls.Add(this.picBox_user_icon);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ui_main_panel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
