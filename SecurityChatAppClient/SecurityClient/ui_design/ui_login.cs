@@ -124,5 +124,11 @@ namespace SecurityClient.ui_design
                     btn_login_Click(this, EventArgs.Empty); break;
             }
         }
+
+        private void linkLbl_register_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Hide();
+            new ui_register().Show();
+        }
     }
 }

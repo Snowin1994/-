@@ -28,5 +28,11 @@ namespace SecurityClient
             get { return signature; }
             set { signature = value; }
         }
+
+        internal void UpdateInfo(string _nickname, string _signature)
+        {
+            nickname = _nickname;
+            signature = _signature;
+        }
     }
 }

@@ -47,6 +47,7 @@ namespace SecurityClient.ui_design
 
             ui_main_panel.GetInstance(user).lbl_nickname.Text = tbx_nickname.Text;
             ui_main_panel.GetInstance(user).tbx_signature.Text = tbx_signature.Text;
+            ui_main_panel.user.UpdateInfo(tbx_nickname.Text, tbx_signature.Text);
 
             this.Close();
         }

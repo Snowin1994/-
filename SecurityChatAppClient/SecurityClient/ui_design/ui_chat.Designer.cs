@@ -90,6 +90,7 @@
             // 
             // rtbx_receive_msg
             // 
+            this.rtbx_receive_msg.Font = new System.Drawing.Font("宋体", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.rtbx_receive_msg.Location = new System.Drawing.Point(1, 1);
             this.rtbx_receive_msg.Name = "rtbx_receive_msg";
             this.rtbx_receive_msg.ReadOnly = true;

@@ -131,6 +131,12 @@
     <Compile Include="ui_design\ui_main_panel.Designer.cs">
       <DependentUpon>ui_main_panel.cs</DependentUpon>
     </Compile>
+    <Compile Include="ui_design\ui_register.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui_design\ui_register.Designer.cs">
+      <DependentUpon>ui_register.cs</DependentUpon>
+    </Compile>
     <Compile Include="ui_design\ui_search_friends.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,6 +180,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ui_design\ui_main_panel.resx">
       <DependentUpon>ui_main_panel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ui_design\ui_register.resx">
+      <DependentUpon>ui_register.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ui_design\ui_search_friends.resx">
       <DependentUpon>ui_search_friends.cs</DependentUpon>
