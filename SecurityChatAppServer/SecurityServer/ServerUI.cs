@@ -27,7 +27,7 @@ namespace SecurityServer
 
         private void ServerInit()
         {
-            
+            btnConnectServer.PerformClick();
         }
 
         private void btnConnectServer_Click(object sender, EventArgs e)

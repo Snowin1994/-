@@ -220,5 +220,18 @@ namespace SecurityClient
                 return false;
             }
         }
+
+        internal string Prikey_Encrypt(string str_username)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal string Pubkey_Encrypt(string msg)
+        {
+            string en_msg = msg;
+
+
+            return en_msg;
+        }
     }
 }

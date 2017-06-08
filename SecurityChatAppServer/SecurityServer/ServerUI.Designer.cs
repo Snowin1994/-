@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ServerUI));
             this.btnConnectServer = new System.Windows.Forms.Button();
             this.tbxStatusBox = new System.Windows.Forms.TextBox();
             this.tbxPort = new System.Windows.Forms.TextBox();
@@ -46,10 +47,13 @@
             // 
             // tbxStatusBox
             // 
+            this.tbxStatusBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.tbxStatusBox.Location = new System.Drawing.Point(12, 12);
             this.tbxStatusBox.Multiline = true;
             this.tbxStatusBox.Name = "tbxStatusBox";
-            this.tbxStatusBox.Size = new System.Drawing.Size(382, 71);
+            this.tbxStatusBox.ReadOnly = true;
+            this.tbxStatusBox.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.tbxStatusBox.Size = new System.Drawing.Size(393, 200);
             this.tbxStatusBox.TabIndex = 1;
             // 
             // tbxPort
@@ -67,19 +71,22 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 12);
             this.label1.TabIndex = 3;
-            this.label1.Text = "port";
+            this.label1.Text = "端口";
             // 
             // ServerUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(574, 278);
+            this.ClientSize = new System.Drawing.Size(499, 224);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbxPort);
             this.Controls.Add(this.tbxStatusBox);
             this.Controls.Add(this.btnConnectServer);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "ServerUI";
-            this.Text = "SecurityServer";
+            this.Text = "服务端";
             this.Load += new System.EventHandler(this.ServerUI_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

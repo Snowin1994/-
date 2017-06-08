@@ -28,12 +28,20 @@ namespace SecurityServer.Command
             /***************/
 
             // 转发消息到接收方
-            foreach (var user in session.AppServer.GetSessions(s => s.Username == receiver))
+            var sessions = session.AppServer.GetSessions(s => s.Username == receiver);
+            if(sessions.Count() != 0)
             {
-                user.Send("ReceiveMsg:" 
+                sessions.ElementAt(0).Send("ReceiveMsg:"
                     + session.Username
                     + "," + msg_type
                     + "," + msg);
+            }
+            else
+            {
+                session.Send("ReceiveMsg:" 
+                    + receiver
+                    + ",common"
+                    + ",【系统消息】：对方不在线，无法收到消息！");
             }
         }
     }

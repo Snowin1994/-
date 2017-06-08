@@ -26,6 +26,46 @@ namespace MysqlConnection
             str_conn = "Database=db_chat_server;Data Source=localhost;User Id=root;Password=123456;Charset=utf8";
         }
 
+        //internal User Login(string username, string password)
+        //{
+        //    try
+        //    {
+        //        string sql = "SELECT username, nickname, signature from user WHERE username = ?username AND userpw = ?userpw ;";
+        //        Log(sql);
+
+        //        MySqlConnection conn = new MySqlConnection(str_conn);
+        //        conn.Open();
+
+        //        MySqlCommand cmd = new MySqlCommand(sql, conn);
+        //        cmd.Prepare();
+        //        cmd.Parameters.AddWithValue("username", username);
+        //        cmd.Parameters.AddWithValue("userpw", password);
+
+        //        MySqlDataReader reader = cmd.ExecuteReader();
+
+        //        User user = new User();
+        //        if (reader.Read())
+        //        {
+        //            user.Username = reader.GetString(0);
+        //            user.Nickname = reader.GetString(1);
+        //            user.Signature = reader.GetString(2);
+        //            Log(user.Username);
+        //        }
+        //        else
+        //        {
+        //            user = null;
+        //        }
+        //        conn.Close();
+
+        //        return user;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Log(ex.ToString());
+        //        return null;
+        //    }
+        //}
+
         internal User Login(string username, string password)
         {
             try
@@ -37,22 +77,11 @@ namespace MysqlConnection
 
                 Log(sql);
 
-
-
                 MySqlConnection mysql_conn = new MySqlConnection(str_conn);
                 mysql_conn.Open();
 
                 MySqlCommand mysql_cmd = new MySqlCommand(sql, mysql_conn);
                 MySqlDataReader mysql_reader = mysql_cmd.ExecuteReader();
-
-                ///////////////////////////
-                // 参数绑定测试 删除 2017/5/19
-
-                //mysql_cmd.CommandText = sql;
-                //mysql_cmd.Parameters.Add();
-
-
-                ///////////////////////////
 
                 User user = new User();
                 if (mysql_reader.Read())
@@ -73,8 +102,6 @@ namespace MysqlConnection
             catch (Exception ex)
             {
                 Log(ex.ToString());
-
-                
 
                 return null;
             }

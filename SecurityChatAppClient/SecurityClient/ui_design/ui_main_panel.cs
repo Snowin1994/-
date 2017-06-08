@@ -203,20 +203,24 @@ namespace SecurityClient.ui_design
 
         private void tmenu_item_delete_friend_Click(object sender, EventArgs e)
         {
-            string notename = lsb_friends.SelectedItem.ToString();
-            foreach (Friend friend in friends_list)
+            if (MessageBox.Show("是否删除好友", "删除好友", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                == System.Windows.Forms.DialogResult.Yes)
             {
-                if (friend.Notename == notename)
+                string notename = lsb_friends.SelectedItem.ToString();
+                foreach (Friend friend in friends_list)
                 {
-                    ui_login.GetInstance().ChatClient.Send("DeleteFriend:"
-                        + user.Username + "," + friend.Username);
+                    if (friend.Notename == notename)
+                    {
+                        ui_login.GetInstance().ChatClient.Send("DeleteFriend:"
+                            + user.Username + "," + friend.Username);
 
-                    break;
+                        break;
+                    }
                 }
-            }
 
-            ui_login.GetInstance().ChatClient.Send("FriendList:"
-                + user.Username);
+                ui_login.GetInstance().ChatClient.Send("FriendList:"
+                    + user.Username);
+            }
         }
 
         private void lsb_friends_DoubleClick(object sender, EventArgs e)

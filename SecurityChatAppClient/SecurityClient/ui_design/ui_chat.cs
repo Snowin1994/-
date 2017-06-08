@@ -168,12 +168,12 @@ namespace SecurityClient.ui_design
                 /**********************************/
 
 
-                // UpdateShowForm(msg_Format, msg_type);
-
+                // string pri_key_username = ui_login.GetInstance().ChatClient.Prikey_Encrypt(str_username);
+                string pub_key_msg = ui_login.GetInstance().ChatClient.Pubkey_Encrypt(tbx_send_msg.Text);
                 ui_login.GetInstance().ChatClient.Send("ReceiveMsg:"
                     + str_username + ","
                     + msg_type + ","
-                    + tbx_send_msg.Text);
+                    + pub_key_msg);
 
                 tbx_send_msg.Text = "";
             }
@@ -260,40 +260,45 @@ namespace SecurityClient.ui_design
 
         private void rtbx_receive_msg_Click(object sender, EventArgs e)
         {
-            var select_start = rtbx_receive_msg.SelectionStart;
-            var select_line = rtbx_receive_msg.GetLineFromCharIndex(select_start);
-            
-            // rtbx_receive_msg.Select(select_start, 0);
-            if (rtbx_receive_msg.Lines.Length == 0)
+            try
             {
-                return;
-            }
-            var select_len = rtbx_receive_msg.Lines[select_line].Length;
+                var select_start = rtbx_receive_msg.SelectionStart;
+                var select_line = rtbx_receive_msg.GetLineFromCharIndex(select_start);
 
-            var line_start = rtbx_receive_msg.GetFirstCharIndexFromLine(select_line);
-            rtbx_receive_msg.Select(line_start, select_len);
-            // 判断是否是阅焚消息
-            if(isMoment(rtbx_receive_msg.SelectedText))
-            {
-                rtbx_receive_msg.SelectionColor = Color.Green;
-                string moment_msg = (string)tables_moment_msg[select_line - 1];
-                rtbx_receive_msg.SelectedText = STR_TAB + moment_msg;
-                rtbx_receive_msg.Update();
-
-                // 休眠时间
-                Thread.Sleep(sleepTime(moment_msg));
-
-                rtbx_receive_msg.Select(line_start, moment_msg.Length + STR_TAB.Length);
-                rtbx_receive_msg.SelectedText = STR_READ_FINISH;
-
-                var char_tail = rtbx_receive_msg.Text[rtbx_receive_msg.Text.Length - 1];
-                if (char_tail != '\n')
+                // rtbx_receive_msg.Select(select_start, 0);
+                if (rtbx_receive_msg.Lines.Length == 0 || rtbx_receive_msg.Lines.Length < select_line)
                 {
-                    rtbx_receive_msg.AppendText("\n");
+                    return;
                 }
-                
+                var select_len = rtbx_receive_msg.Lines[select_line].Length;
 
-            }            
+                var line_start = rtbx_receive_msg.GetFirstCharIndexFromLine(select_line);
+                rtbx_receive_msg.Select(line_start, select_len);
+                // 判断是否是阅焚消息
+                if (isMoment(rtbx_receive_msg.SelectedText))
+                {
+                    rtbx_receive_msg.SelectionColor = Color.Green;
+                    string moment_msg = (string)tables_moment_msg[select_line - 1];
+                    rtbx_receive_msg.SelectedText = STR_TAB + moment_msg;
+                    rtbx_receive_msg.Update();
+
+                    // 休眠时间
+                    Thread.Sleep(sleepTime(moment_msg));
+
+                    rtbx_receive_msg.Select(line_start, moment_msg.Length + STR_TAB.Length);
+                    rtbx_receive_msg.SelectedText = STR_READ_FINISH;
+
+                    var char_tail = rtbx_receive_msg.Text[rtbx_receive_msg.Text.Length - 1];
+                    if (char_tail != '\n')
+                    {
+                        rtbx_receive_msg.AppendText("\n");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         /// <summary>

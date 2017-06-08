@@ -38,7 +38,6 @@
             this.tmenu_item_send_msg = new System.Windows.Forms.ToolStripMenuItem();
             this.tmenu_item_update_note = new System.Windows.Forms.ToolStripMenuItem();
             this.tmenu_item_delete_friend = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.cmenus_setting = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.选项1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -108,11 +107,10 @@
             this.cmenus_friend_setting.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tmenu_item_send_msg,
             this.tmenu_item_update_note,
-            this.tmenu_item_delete_friend,
-            this.toolStripMenuItem5});
+            this.tmenu_item_delete_friend});
             this.cmenus_friend_setting.Name = "cmenus_friend_setting";
             this.cmenus_friend_setting.ShowCheckMargin = true;
-            this.cmenus_friend_setting.Size = new System.Drawing.Size(171, 92);
+            this.cmenus_friend_setting.Size = new System.Drawing.Size(171, 70);
             // 
             // tmenu_item_send_msg
             // 
@@ -134,12 +132,6 @@
             this.tmenu_item_delete_friend.Size = new System.Drawing.Size(170, 22);
             this.tmenu_item_delete_friend.Text = "删除好友";
             this.tmenu_item_delete_friend.Click += new System.EventHandler(this.tmenu_item_delete_friend_Click);
-            // 
-            // toolStripMenuItem5
-            // 
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(170, 22);
-            this.toolStripMenuItem5.Text = "加入黑名单";
             // 
             // textBox2
             // 
@@ -264,7 +256,6 @@
         private System.Windows.Forms.ToolStripMenuItem tmenu_item_send_msg;
         private System.Windows.Forms.ToolStripMenuItem tmenu_item_update_note;
         private System.Windows.Forms.ToolStripMenuItem tmenu_item_delete_friend;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
         private System.Windows.Forms.PictureBox pbx_search_friends;
         public System.Windows.Forms.ListBox lsb_friends;
         public System.Windows.Forms.Label lbl_nickname;

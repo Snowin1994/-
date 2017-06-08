@@ -111,6 +111,7 @@
     <Compile Include="FriendList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RSATool.cs" />
     <Compile Include="SuperClient.cs" />
     <Compile Include="ThreadMessage.cs" />
     <Compile Include="ui_design\ui_chat.cs">

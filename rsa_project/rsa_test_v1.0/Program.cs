@@ -10,11 +10,17 @@ namespace rsa_test_v1._0
     {
         static void Main(string[] args)
         {
+            //RSATool rsa = new RSATool();
+
+            //string result = RSATool.Read(@"C:\RSA_Pub.txt");
+            //Console.WriteLine(result);
+
             Console.WriteLine("请输入需要加密的文字：");
             string src = Console.ReadLine();
             Console.WriteLine();
-            
+
             RSATool rsa_tool = new RSATool();
+
             string cypher = rsa_tool.Encrypt(src);
             Console.WriteLine("加密后的文字：");
             Console.WriteLine(cypher);

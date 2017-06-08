@@ -15,18 +15,9 @@ namespace rsa_test_v1._0
             rsaService = new RSACryptoServiceProvider();
             publicKey = rsaService.ExportCspBlob(false);
             privateKey = rsaService.ExportCspBlob(true);
-            // rsaService.ImportCspBlob(publicKey);
 
             Log(PublicKey, @"C:\RSA_Pub.txt");
             Log(PrivateKey, @"C:\RSA_Pri.txt");
-        }
-
-        public RSATool(string strPublic)
-        {
-            publicKey = new UTF8Encoding().GetBytes(strPublic);
-
-            rsaService = new RSACryptoServiceProvider();
-            rsaService.ImportCspBlob(publicKey);
         }
 
         /// <summary>
@@ -97,34 +88,16 @@ namespace rsa_test_v1._0
         {
             try
             {
-                FileStream file = new FileStream(path, FileMode.Append, FileAccess.Write, FileShare.ReadWrite);
-                StreamWriter writer = new StreamWriter(file);
-                writer.WriteLine(source);
-                writer.Flush();
-                writer.Close();
-                file.Close();
+                FileStream f = new FileStream(path, FileMode.Append, FileAccess.Write, FileShare.ReadWrite);
+                StreamWriter sw = new StreamWriter(f);
+                sw.WriteLine(source);
+                sw.Flush();
+                sw.Close();
+                f.Close();
             }
             catch (Exception ex)
             {
 
-            }
-        }
-
-        public static string Read(string path)
-        {
-            try
-            {
-                FileStream file = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-                StreamReader reader = new StreamReader(file);
-                string source = reader.ReadToEnd();
-                reader.Close();
-                file.Close();
-
-                return source;
-            }
-            catch (Exception ex)
-            {
-                return null;
             }
         }
 

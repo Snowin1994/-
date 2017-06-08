@@ -113,6 +113,7 @@
             // 
             // tbx_send_msg
             // 
+            this.tbx_send_msg.Font = new System.Drawing.Font("宋体", 18F);
             this.tbx_send_msg.Location = new System.Drawing.Point(1, 1);
             this.tbx_send_msg.Multiline = true;
             this.tbx_send_msg.Name = "tbx_send_msg";
