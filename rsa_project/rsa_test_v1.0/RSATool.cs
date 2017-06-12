@@ -26,7 +26,7 @@ namespace rsa_test_v1._0
             publicKey = new UTF8Encoding().GetBytes(strPublic);
 
             rsaService = new RSACryptoServiceProvider();
-            rsaService.ImportCspBlob(publicKey);
+            // rsaService.FromXmlString.ImportCspBlob(publicKey);
         }
 
         /// <summary>
@@ -48,6 +48,7 @@ namespace rsa_test_v1._0
                     Console.Write(data + " ");
                 }
                 Console.WriteLine();
+
 
                 return Convert.ToBase64String(cypherByte);
             }
