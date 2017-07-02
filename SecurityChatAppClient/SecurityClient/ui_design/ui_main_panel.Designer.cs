@@ -40,9 +40,7 @@
             this.tmenu_item_delete_friend = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.cmenus_setting = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.选项1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tmenu_update_password = new System.Windows.Forms.ToolStripMenuItem();
-            this.tmenu_update_phonenum = new System.Windows.Forms.ToolStripMenuItem();
             this.tmenu_switch_user = new System.Windows.Forms.ToolStripMenuItem();
             this.pbx_search_friends = new System.Windows.Forms.PictureBox();
             this.picBox_setting = new System.Windows.Forms.PictureBox();
@@ -143,36 +141,22 @@
             // cmenus_setting
             // 
             this.cmenus_setting.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.选项1ToolStripMenuItem,
             this.tmenu_update_password,
-            this.tmenu_update_phonenum,
             this.tmenu_switch_user});
             this.cmenus_setting.Name = "cmenus_setting";
-            this.cmenus_setting.Size = new System.Drawing.Size(149, 92);
-            // 
-            // 选项1ToolStripMenuItem
-            // 
-            this.选项1ToolStripMenuItem.Name = "选项1ToolStripMenuItem";
-            this.选项1ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.选项1ToolStripMenuItem.Text = "清空历史消息";
+            this.cmenus_setting.Size = new System.Drawing.Size(125, 48);
             // 
             // tmenu_update_password
             // 
             this.tmenu_update_password.Name = "tmenu_update_password";
-            this.tmenu_update_password.Size = new System.Drawing.Size(148, 22);
+            this.tmenu_update_password.Size = new System.Drawing.Size(124, 22);
             this.tmenu_update_password.Text = "修改密码";
             this.tmenu_update_password.Click += new System.EventHandler(this.tmenu_update_password_Click);
-            // 
-            // tmenu_update_phonenum
-            // 
-            this.tmenu_update_phonenum.Name = "tmenu_update_phonenum";
-            this.tmenu_update_phonenum.Size = new System.Drawing.Size(148, 22);
-            this.tmenu_update_phonenum.Text = "修改手机号";
             // 
             // tmenu_switch_user
             // 
             this.tmenu_switch_user.Name = "tmenu_switch_user";
-            this.tmenu_switch_user.Size = new System.Drawing.Size(148, 22);
+            this.tmenu_switch_user.Size = new System.Drawing.Size(124, 22);
             this.tmenu_switch_user.Text = "切换用户";
             this.tmenu_switch_user.Click += new System.EventHandler(this.tmenu_switch_user_Click);
             // 
@@ -247,9 +231,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.ContextMenuStrip cmenus_setting;
-        private System.Windows.Forms.ToolStripMenuItem 选项1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tmenu_update_password;
-        private System.Windows.Forms.ToolStripMenuItem tmenu_update_phonenum;
         private System.Windows.Forms.PictureBox picBox_setting;
         private System.Windows.Forms.ToolStripMenuItem tmenu_switch_user;
         private System.Windows.Forms.ContextMenuStrip cmenus_friend_setting;
